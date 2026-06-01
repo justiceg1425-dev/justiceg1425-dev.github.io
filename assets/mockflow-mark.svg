@@ -1,0 +1,8 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">MockFlow mark</title>
+  <desc id="desc">A compact teal mark shaped like a connected API flow.</desc>
+  <rect x="8" y="8" width="80" height="80" rx="20" fill="#22c7b8"/>
+  <path d="M29 58V38L42 50L54 35L67 58" stroke="#082326" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="29" cy="58" r="5" fill="#082326"/>
+  <circle cx="67" cy="58" r="5" fill="#082326"/>
+</svg>

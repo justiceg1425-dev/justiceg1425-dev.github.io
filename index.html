@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Justice Gnanamuttu - QA Automation And AI Tool Portfolio</title>
+    <meta name="description" content="Portfolio of QA automation, API simulation, AI-assisted testing, and database validation tools built by Justice Gnanamuttu.">
+    <meta property="og:title" content="Justice Gnanamuttu - Tool Portfolio">
+    <meta property="og:description" content="MockFlow, DB Table Compare Pro, and LLM Test Case Generator: local-first tools for testing, validation, and automation.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="assets/mockflow-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Portfolio home">
+        <span class="brand-mark">JG</span>
+        <span>Justice Gnanamuttu</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#projects">Projects</a>
+        <a href="#case-studies">Case Studies</a>
+        <a href="#skills">Skills</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">QA automation, AI testing, and data validation</p>
+          <h1>Tools that remove test bottlenecks.</h1>
+          <p class="lead">A portfolio of practical engineering tools built around API simulation, database reconciliation, and AI-assisted test case generation. The source code can stay private; the product thinking, architecture, and user workflows can still be shown clearly.</p>
+          <div class="button-row">
+            <a class="button primary" href="#projects">View tools</a>
+            <a class="button" href="#case-studies">Read case studies</a>
+          </div>
+        </div>
+        <div class="hero-board" aria-label="Tool summary">
+          <article class="hero-card">
+            <span class="tool-icon">MF</span>
+            <div>
+              <strong>MockFlow</strong>
+              <span>Local API capture, templating, and mock simulation for Postman-driven testing.</span>
+            </div>
+            <span class="tag">API Testing</span>
+          </article>
+          <article class="hero-card">
+            <span class="tool-icon">DB</span>
+            <div>
+              <strong>DB Table Compare Pro</strong>
+              <span>Oracle/MySQL reconciliation with mapping, batching, rules, and AI summaries.</span>
+            </div>
+            <span class="tag">Data QA</span>
+          </article>
+          <article class="hero-card">
+            <span class="tool-icon">TC</span>
+            <div>
+              <strong>LLM Test Case Generator</strong>
+              <span>Turns BRDs and API specs into structured, exportable software test cases.</span>
+            </div>
+            <span class="tag">AI QA</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section alt" id="projects">
+        <div class="section-intro">
+          <p class="eyebrow">Featured tools</p>
+          <h2>Three products, one testing theme.</h2>
+          <p>Each project targets a different testing bottleneck: unavailable APIs, unreliable data comparisons, and slow test case authoring.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <img src="assets/mockflow-simulation.png" alt="MockFlow simulation workbench">
+            <div class="body">
+              <h3>MockFlow</h3>
+              <p>A local-first API proxy and mock workbench that captures real traffic, promotes messages into templates, and simulates API responses for Postman and REST clients.</p>
+              <div class="meta">
+                <span>Python</span>
+                <span>Vanilla Web UI</span>
+                <span>HTTPS proxy</span>
+                <span>OpenAPI</span>
+              </div>
+            </div>
+          </article>
+          <article class="project-card">
+            <img src="assets/db-compare-visual.svg" alt="DB Table Compare Pro table comparison visual">
+            <div class="body">
+              <h3>DB Table Compare Pro</h3>
+              <p>A Streamlit tool for reconciling source and target tables across Oracle/MySQL, with custom mappings, per-column rules, batch strategies, and AI-assisted mismatch summaries.</p>
+              <div class="meta">
+                <span>Python</span>
+                <span>Streamlit</span>
+                <span>Oracle/MySQL</span>
+                <span>Ollama</span>
+              </div>
+            </div>
+          </article>
+          <article class="project-card">
+            <img src="assets/llm-tcg-visual.svg" alt="LLM Test Case Generator workflow visual">
+            <div class="body">
+              <h3>LLM Test Case Generator</h3>
+              <p>A Streamlit application that parses BRDs or YAML API specs and generates structured test cases with history, filtering, and exports for JSON, Excel, QMetry, and Gherkin.</p>
+              <div class="meta">
+                <span>Python</span>
+                <span>Streamlit</span>
+                <span>SQLite</span>
+                <span>QMetry</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="case-studies">
+        <div class="section-intro">
+          <p class="eyebrow">Case studies</p>
+          <h2>Built around real QA workflows.</h2>
+          <p>The strongest portfolio story is not just that these tools exist. It is that each one turns a painful testing workflow into a repeatable product experience.</p>
+        </div>
+
+        <article class="case-study">
+          <div class="case-body">
+            <p class="eyebrow">MockFlow</p>
+            <h3>Simulate APIs before every downstream service is ready.</h3>
+            <p>MockFlow acts as a local middleware lab for API teams. It captures request/response traffic in learning mode, converts messages into editable templates, and responds from selected templates in simulation mode.</p>
+            <ul>
+              <li>Supports capture, template editing, active simulation queues, matching diagnostics, and dynamic response variables.</li>
+              <li>Imports OpenAPI and Postman collections to speed up contract-first testing.</li>
+              <li>Includes AI-assisted scenario generation and duplicate governance provisions.</li>
+            </ul>
+          </div>
+          <img src="assets/mockflow-intelligence.png" alt="MockFlow scenario intelligence review">
+        </article>
+
+        <article class="case-study">
+          <div class="case-body">
+            <p class="eyebrow">DB Table Compare Pro</p>
+            <h3>Compare enterprise tables without manual spreadsheet drift checks.</h3>
+            <p>This tool helps teams validate source and target datasets across different database engines, schema names, and transformation rules.</p>
+            <ul>
+              <li>Handles key selection, custom mapping, filtering, batch processing, and per-column comparison rules.</li>
+              <li>Supports Oracle and MySQL with a Streamlit interface for analysts and testers.</li>
+              <li>Uses local LLMs to summarize mismatches and help users reason about data quality issues.</li>
+            </ul>
+          </div>
+          <img src="assets/db-compare-visual.svg" alt="DB Compare visual">
+        </article>
+
+        <article class="case-study">
+          <div class="case-body">
+            <p class="eyebrow">LLM Test Case Generator</p>
+            <h3>Turn requirements and API specs into reviewable test cases.</h3>
+            <p>LLM_TCG shortens the gap between requirements and executable QA assets by parsing documents and producing structured test cases that can be reviewed, versioned, and exported.</p>
+            <ul>
+              <li>Accepts BRD documents and YAML API specifications.</li>
+              <li>Maintains history/versioning through SQLite.</li>
+              <li>Exports to JSON, Excel, QMetry CSV, and Gherkin JSON.</li>
+            </ul>
+          </div>
+          <img src="assets/llm-tcg-visual.svg" alt="LLM TCG visual">
+        </article>
+      </section>
+
+      <section class="section alt" id="skills">
+        <div class="section-intro">
+          <p class="eyebrow">What this demonstrates</p>
+          <h2>Product thinking plus hands-on implementation.</h2>
+          <p>These tools show practical experience across the QA lifecycle, from requirements analysis to API simulation and database validation.</p>
+        </div>
+        <div class="skill-grid">
+          <article class="skill-card">
+            <strong>QA Engineering</strong>
+            <h3>Testing workflows</h3>
+            <p>API mocking, scenario generation, regression support, data reconciliation, and export-ready test assets.</p>
+          </article>
+          <article class="skill-card">
+            <strong>AI Adoption</strong>
+            <h3>Human-in-the-loop tooling</h3>
+            <p>AI assists with scenarios, summaries, and generation while users keep control of approval and edits.</p>
+          </article>
+          <article class="skill-card">
+            <strong>Architecture</strong>
+            <h3>Local-first systems</h3>
+            <p>Python backends, Streamlit apps, browser dashboards, local storage, optional cloud sync, and desktop agent direction.</p>
+          </article>
+          <article class="skill-card">
+            <strong>UX Design</strong>
+            <h3>Non-technical users</h3>
+            <p>Wizard-like setup, visual queues, diagnostics, feedback states, and clean dashboards for repeated tester workflows.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="roadmap">
+        <div class="section-intro">
+          <p class="eyebrow">Roadmap</p>
+          <h2>Where the portfolio goes next.</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <span>Now</span>
+            <div>
+              <h3>Public portfolio site</h3>
+              <p>Static GitHub Pages site with safe summaries, screenshots, architecture notes, and private-source positioning.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <span>Next</span>
+            <div>
+              <h3>Project-specific pages</h3>
+              <p>Add deeper pages for each tool with architecture diagrams, sanitized demos, and short product videos.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <span>Later</span>
+            <div>
+              <h3>Downloadable demos</h3>
+              <p>Publish packaged local agents or sanitized demo builds where licensing and data safety are ready.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section alt" id="contact">
+        <div class="contact-card">
+          <div>
+            <p class="eyebrow">Recruiter-friendly note</p>
+            <h2>Private source, public product story.</h2>
+            <p>This site is designed to showcase the thinking, workflows, architecture, and UI direction behind the tools without exposing implementation details or sensitive local data.</p>
+          </div>
+          <a class="button primary" href="mailto:justiceg.jg@gmail.com">Contact</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Justice Gnanamuttu - Tool Portfolio</span>
+      <span>Copyright <span data-year></span>. Source repositories remain private.</span>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>
