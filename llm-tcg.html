@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LLM Test Case Generator Case Study - Justice Gnanamuttu</title>
+    <meta name="description" content="LLM Test Case Generator case study: Streamlit app for generating structured test cases from BRDs, PDFs, text files, and YAML API specifications.">
+    <link rel="icon" href="assets/mockflow-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Portfolio home">
+        <span class="brand-mark">JG</span>
+        <span>Justice Gnanamuttu</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html#projects">Projects</a>
+        <a href="mockflow.html">MockFlow</a>
+        <a href="db-compare.html">DB Compare</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="detail-hero">
+        <div>
+          <a class="breadcrumb" href="index.html">Back to portfolio</a>
+          <p class="eyebrow">AI-assisted test design</p>
+          <h1>LLM Test Case Generator</h1>
+          <p class="lead">A Streamlit application that parses BRDs and API specifications, generates structured test cases, stores version history, and exports test assets in formats useful for QA teams.</p>
+          <div class="button-row">
+            <a class="button primary" href="#features">Explore features</a>
+            <a class="button" href="#setup">Setup and usage</a>
+          </div>
+          <div class="stat-grid">
+            <article class="stat"><strong>BRD</strong><span>document-driven input</span></article>
+            <article class="stat"><strong>YAML</strong><span>API spec parsing</span></article>
+            <article class="stat"><strong>SQLite</strong><span>version history</span></article>
+            <article class="stat"><strong>QMetry</strong><span>export/integration target</span></article>
+          </div>
+        </div>
+        <img src="assets/llm-tcg-visual.svg" alt="LLM Test Case Generator visual">
+      </section>
+
+      <section class="section alt">
+        <div class="two-column">
+          <div class="section-intro">
+            <p class="eyebrow">Problem</p>
+            <h2>Manual test case authoring is slow and inconsistent.</h2>
+            <p>When teams receive BRDs, PDFs, text requirements, or API specs, testers still need to extract flows, preconditions, edge cases, and expected results. That work is valuable, but the first-pass drafting can consume time that could be spent reviewing quality and coverage.</p>
+          </div>
+          <article class="panel">
+            <h3>What the tool solves</h3>
+            <ul>
+              <li>Accepts requirement documents and YAML API specs.</li>
+              <li>Parses structured requirements into flows, actors, preconditions, and triggers.</li>
+              <li>Generates reviewable test cases through LLM prompts and deterministic helpers.</li>
+              <li>Maintains version history per uploaded file.</li>
+              <li>Exports in formats that can move into downstream QA tools.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="features">
+        <div class="section-intro">
+          <p class="eyebrow">Feature depth</p>
+          <h2>From requirements to structured QA assets.</h2>
+        </div>
+        <div class="feature-list">
+          <article class="panel">
+            <h3>Document intake</h3>
+            <p>Supports upload of BRDs and requirement files such as DOCX, PDF, TXT, plus YAML API specifications for endpoint-oriented test generation.</p>
+          </article>
+          <article class="panel">
+            <h3>Requirement parsing</h3>
+            <p>Extracts high-level requirement structure such as title, description, actors, flows, alternative paths, preconditions, postconditions, and API endpoint details.</p>
+          </article>
+          <article class="panel">
+            <h3>LLM generation</h3>
+            <p>Uses prompt-driven generation to produce detailed test cases with description, steps, expected results, type, and API-specific context.</p>
+          </article>
+          <article class="panel">
+            <h3>Review and filtering</h3>
+            <p>Generated cases can be viewed, expanded/collapsed, searched by keyword, filtered, restored from history, and compared against previous versions.</p>
+          </article>
+          <article class="panel">
+            <h3>Exports</h3>
+            <p>Exports generated test cases to JSON, Excel, QMetry CSV, and Gherkin JSON so output can move into test management or automation workflows.</p>
+          </article>
+          <article class="panel">
+            <h3>QMetry path</h3>
+            <p>Includes optional integration provisions for pushing generated test cases into QMetry, which makes it closer to a QA operations tool than a standalone generator.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section alt">
+        <div class="two-column">
+          <div>
+            <p class="eyebrow">Architecture</p>
+            <h2>Streamlit workflow with parser, generator, exporter, and history modules.</h2>
+            <p class="lead">The tool is structured around a clear pipeline: ingest a file, parse requirements, generate cases, store versions, then export or integrate with downstream QA platforms.</p>
+          </div>
+          <div class="panel architecture">
+            <div class="flow-row">
+              <div class="flow-box"><strong>Input files</strong><br>BRD, PDF, TXT, YAML API specs.</div>
+              <div class="flow-arrow">-&gt;</div>
+              <div class="flow-box"><strong>Parser layer</strong><br>Turns documents into structured requirements.</div>
+            </div>
+            <div class="flow-row">
+              <div class="flow-box"><strong>Generator</strong><br>LLM prompts plus rule-based cases.</div>
+              <div class="flow-arrow">-&gt;</div>
+              <div class="flow-box"><strong>Review UI</strong><br>Cards, filters, history, restore flow.</div>
+            </div>
+            <div class="flow-row">
+              <div class="flow-box"><strong>SQLite history</strong><br>Versioned generated cases per file.</div>
+              <div class="flow-arrow">-&gt;</div>
+              <div class="flow-box"><strong>Exports</strong><br>JSON, Excel, QMetry CSV, Gherkin JSON.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="setup">
+        <div class="two-column">
+          <div class="panel">
+            <h2>Setup and use</h2>
+            <ol>
+              <li>Create a Python environment and install project requirements.</li>
+              <li>Run the Streamlit application locally.</li>
+              <li>Log in using configured user access.</li>
+              <li>Upload a BRD, PDF, TXT, or YAML API specification.</li>
+              <li>Review parsed requirements, generate test cases, and inspect the output.</li>
+              <li>Export to JSON, Excel, QMetry CSV, or Gherkin JSON.</li>
+            </ol>
+          </div>
+          <div class="panel">
+            <h2>Tech stack</h2>
+            <div class="meta">
+              <span>Python</span>
+              <span>Streamlit</span>
+              <span>SQLite</span>
+              <span>LLM prompts</span>
+              <span>Document parsers</span>
+              <span>Excel export</span>
+              <span>QMetry CSV</span>
+            </div>
+            <p class="safety-note">Public portfolio note: this page avoids publishing user data, login config, local history databases, prompts with secrets, or customer requirements.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>LLM Test Case Generator case study</span>
+      <span><a href="index.html">Back to portfolio</a></span>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DB Table Compare Pro Case Study - Justice Gnanamuttu</title>
+    <meta name="description" content="DB Table Compare Pro case study: Streamlit database reconciliation across Oracle and MySQL with mappings, batch processing, rules, exports, and AI summaries.">
+    <link rel="icon" href="assets/mockflow-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Portfolio home">
+        <span class="brand-mark">JG</span>
+        <span>Justice Gnanamuttu</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html#projects">Projects</a>
+        <a href="mockflow.html">MockFlow</a>
+        <a href="llm-tcg.html">LLM_TCG</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="detail-hero">
+        <div>
+          <a class="breadcrumb" href="index.html">Back to portfolio</a>
+          <p class="eyebrow">Database reconciliation</p>
+          <h1>DB Table Compare Pro</h1>
+          <p class="lead">A Streamlit application for validating source and target database tables across Oracle and MySQL, with mapping, batching, per-column rules, exports, and AI-assisted mismatch analysis.</p>
+          <div class="button-row">
+            <a class="button primary" href="#features">Explore features</a>
+            <a class="button" href="#setup">Setup and usage</a>
+          </div>
+          <div class="stat-grid">
+            <article class="stat"><strong>Oracle</strong><span>enterprise database support</span></article>
+            <article class="stat"><strong>MySQL</strong><span>cross-database comparison</span></article>
+            <article class="stat"><strong>Batch</strong><span>large table strategies</span></article>
+            <article class="stat"><strong>AI</strong><span>local mismatch summaries</span></article>
+          </div>
+        </div>
+        <img src="assets/db-compare-visual.svg" alt="DB Table Compare visual">
+      </section>
+
+      <section class="section alt">
+        <div class="two-column">
+          <div class="section-intro">
+            <p class="eyebrow">Problem</p>
+            <h2>Data reconciliation gets messy when schemas and systems differ.</h2>
+            <p>QA and data teams often need to prove that migrations, integrations, ETL jobs, or system replacements produce equivalent data. Manual comparison in spreadsheets does not scale, especially when tables have different column names, business rules, filters, and row volumes.</p>
+          </div>
+          <article class="panel">
+            <h3>What the tool solves</h3>
+            <ul>
+              <li>Compares source and target rows using single or composite keys.</li>
+              <li>Maps columns across different table schemas.</li>
+              <li>Supports tolerance, trimming, case-insensitive comparison, and derived columns.</li>
+              <li>Processes larger datasets through batching strategies.</li>
+              <li>Summarizes mismatch patterns with local LLM assistance.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="features">
+        <div class="section-intro">
+          <p class="eyebrow">Feature depth</p>
+          <h2>A focused reconciliation workbench.</h2>
+        </div>
+        <div class="feature-list">
+          <article class="panel">
+            <h3>Connection workflow</h3>
+            <p>Users connect source and target systems, select database type, authenticate, and choose tables through a Streamlit UI designed for tester and analyst workflows.</p>
+          </article>
+          <article class="panel">
+            <h3>Flexible comparison setup</h3>
+            <p>Supports key selection, compare-column selection, custom mappings, filters, derived columns, row hashes, and per-column comparison behavior.</p>
+          </article>
+          <article class="panel">
+            <h3>Batch processing</h3>
+            <p>Designed for practical data sizes with numeric range batching, ordered seek batching, and row-based estimation to avoid one giant comparison pass.</p>
+          </article>
+          <article class="panel">
+            <h3>Interactive result review</h3>
+            <p>Results can be reviewed through sortable/filterable tables, mismatch summaries, per-field diffs, CSV output, and Excel reports.</p>
+          </article>
+          <article class="panel">
+            <h3>AI-assisted analysis</h3>
+            <p>Local Ollama integration helps summarize discrepancies, explain mismatch causes, and support natural-language-to-SQL filter creation.</p>
+          </article>
+          <article class="panel">
+            <h3>Self-test coverage</h3>
+            <p>The project includes tests for comparison behavior, duplicate detection, auto-mapping, numeric tolerance, row hashing, SQL validation, and SQLite integration flows.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section alt">
+        <div class="two-column">
+          <div>
+            <p class="eyebrow">Architecture</p>
+            <h2>Streamlit front end with comparison modules behind it.</h2>
+            <p class="lead">The application separates UI concerns from database adapters, comparison logic, mapping, profiling, validation, and AI assistance. That makes the tool easier to extend with more database types or rules later.</p>
+          </div>
+          <div class="panel architecture">
+            <div class="flow-row">
+              <div class="flow-box"><strong>Streamlit UI</strong><br>Connection setup, mapping, options, and results.</div>
+              <div class="flow-arrow">-&gt;</div>
+              <div class="flow-box"><strong>DB adapters</strong><br>Oracle and MySQL connection handling.</div>
+            </div>
+            <div class="flow-row">
+              <div class="flow-box"><strong>Comparison engine</strong><br>Keys, mappings, rules, batches, and row hashes.</div>
+              <div class="flow-arrow">-&gt;</div>
+              <div class="flow-box"><strong>Results layer</strong><br>Mismatches, missing rows, exports, summaries.</div>
+            </div>
+            <div class="flow-row">
+              <div class="flow-box"><strong>Local LLM</strong><br>Optional privacy-preserving analysis.</div>
+              <div class="flow-arrow">-&gt;</div>
+              <div class="flow-box"><strong>Tester insight</strong><br>Root-cause hints and NL-to-SQL filters.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="setup">
+        <div class="two-column">
+          <div class="panel">
+            <h2>Setup and use</h2>
+            <ol>
+              <li>Create a Python virtual environment and install requirements.</li>
+              <li>Configure Oracle/MySQL client requirements and optional Ollama settings.</li>
+              <li>Run the Streamlit app locally.</li>
+              <li>Connect source and target databases.</li>
+              <li>Select tables, keys, compare columns, mappings, filters, and rules.</li>
+              <li>Run comparison, review mismatches, export results, and optionally generate AI summaries.</li>
+            </ol>
+          </div>
+          <div class="panel">
+            <h2>Tech stack</h2>
+            <div class="meta">
+              <span>Python</span>
+              <span>Streamlit</span>
+              <span>Pandas</span>
+              <span>Oracle driver</span>
+              <span>PyMySQL</span>
+              <span>Ollama</span>
+              <span>Pytest</span>
+            </div>
+            <p class="safety-note">Public portfolio note: the page describes capability and architecture only. It does not include database credentials, `.env` files, schemas, or customer data.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>DB Table Compare Pro case study</span>
+      <span><a href="index.html">Back to portfolio</a></span>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>

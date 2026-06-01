@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MockFlow Case Study - Justice Gnanamuttu</title>
+    <meta name="description" content="MockFlow case study: local API proxy, learning mode, template bank, simulation queue, OpenAPI intelligence, and Postman-focused testing workflow.">
+    <link rel="icon" href="assets/mockflow-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Portfolio home">
+        <span class="brand-mark">JG</span>
+        <span>Justice Gnanamuttu</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html#projects">Projects</a>
+        <a href="db-compare.html">DB Compare</a>
+        <a href="llm-tcg.html">LLM_TCG</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="detail-hero">
+        <div>
+          <a class="breadcrumb" href="index.html">Back to portfolio</a>
+          <p class="eyebrow">API simulation workbench</p>
+          <h1>MockFlow</h1>
+          <p class="lead">A local-first API proxy and mock lab for capturing request/response traffic, promoting messages into editable templates, and simulating reliable API responses for Postman-driven testing.</p>
+          <div class="button-row">
+            <a class="button primary" href="#workflow">How it works</a>
+            <a class="button" href="#setup">Setup and usage</a>
+          </div>
+          <div class="stat-grid">
+            <article class="stat"><strong>Local</strong><span>desktop agent first</span></article>
+            <article class="stat"><strong>HTTP/S</strong><span>capture and simulation</span></article>
+            <article class="stat"><strong>OpenAPI</strong><span>scenario generation</span></article>
+            <article class="stat"><strong>Postman</strong><span>tester workflow focus</span></article>
+          </div>
+        </div>
+        <img src="assets/mockflow-simulation.png" alt="MockFlow simulation workbench">
+      </section>
+
+      <section class="section alt" id="problem">
+        <div class="two-column">
+          <div class="section-intro">
+            <p class="eyebrow">Problem</p>
+            <h2>API teams wait on systems that are not always ready.</h2>
+            <p>Frontend teams, QA engineers, and integration testers often need predictable API responses before downstream services are stable, deployed, or even built. Hand-written mock JSON files work for small cases, but they become painful when the test flow needs headers, matching rules, edge cases, and captured real traffic.</p>
+          </div>
+          <article class="panel">
+            <h3>What MockFlow solves</h3>
+            <ul>
+              <li>Captures real request and response pairs in learning mode.</li>
+              <li>Creates editable templates that can be reused in future test runs.</li>
+              <li>Lets testers queue only the templates they want active for a specific flow.</li>
+              <li>Supports OpenAPI and Postman collection imports to speed up contract-first testing.</li>
+              <li>Adds diagnostics so users can understand why a request matched or missed.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="features">
+        <div class="section-intro">
+          <p class="eyebrow">Feature depth</p>
+          <h2>Built as a tester workbench, not just a mock server.</h2>
+        </div>
+        <div class="feature-list">
+          <article class="panel">
+            <h3>Learning mode</h3>
+            <p>MockFlow listens to traffic routed through the local agent and captures request metadata, headers, query fields, bodies, upstream response status, response headers, and response payloads.</p>
+          </article>
+          <article class="panel">
+            <h3>Template editor</h3>
+            <p>Users can edit method, path, status, delay, request fields, response fields, headers, matching rules, and dynamic response variables such as dates, UUIDs, random values, and request-derived fields.</p>
+          </article>
+          <article class="panel">
+            <h3>Simulation queue</h3>
+            <p>Saved templates can be armed in a queue so only selected endpoints respond from MockFlow. This supports controlled end-to-end flows while keeping the full template bank intact.</p>
+          </article>
+          <article class="panel">
+            <h3>Scenario intelligence</h3>
+            <p>OpenAPI documents and captured workspace messages can generate reviewable scenarios, duplicate flags, coverage maps, and needs-edit indicators for inferred negative cases.</p>
+          </article>
+          <article class="panel">
+            <h3>Postman workflow</h3>
+            <p>The product direction is local desktop agent first, with Postman and Newman as the execution layer. MockFlow provides the mock response engine and activity diagnostics.</p>
+          </article>
+          <article class="panel">
+            <h3>Storage and safety</h3>
+            <p>Local JSON and SQLite storage are supported, with sensitive field redaction, workspace export/import, and Convex cloud sync provisions planned for team scenarios.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section alt" id="workflow">
+        <div class="two-column">
+          <div>
+            <p class="eyebrow">Architecture</p>
+            <h2>Local proxy, browser dashboard, template engine.</h2>
+            <p class="lead">The design keeps traffic capture local for privacy and practicality. A future cloud layer can sync sanitized workspaces, but the runtime that Postman talks to belongs on the tester machine.</p>
+          </div>
+          <div class="panel architecture">
+            <div class="flow-row">
+              <div class="flow-box"><strong>Postman / REST client</strong><br>Routes requests through localhost.</div>
+              <div class="flow-arrow">-&gt;</div>
+              <div class="flow-box"><strong>MockFlow local agent</strong><br>Captures, forwards, or simulates.</div>
+            </div>
+            <div class="flow-row">
+              <div class="flow-box"><strong>Template bank</strong><br>Saved responses and matching rules.</div>
+              <div class="flow-arrow">-&gt;</div>
+              <div class="flow-box"><strong>Simulation queue</strong><br>Active mock set for the current test.</div>
+            </div>
+            <div class="flow-row">
+              <div class="flow-box"><strong>OpenAPI / Postman imports</strong><br>Generate first-pass templates and scenarios.</div>
+              <div class="flow-arrow">-&gt;</div>
+              <div class="flow-box"><strong>Review workflow</strong><br>Approve, edit, flag duplicates, and promote.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="setup">
+        <div class="two-column">
+          <div class="panel">
+            <h2>Setup and use</h2>
+            <ol>
+              <li>Start the local MockFlow agent from the tray or PowerShell helper.</li>
+              <li>Open the dashboard and run the environment readiness checks.</li>
+              <li>Configure Postman to route traffic through the local proxy or use the `/proxy/host/path` URL style.</li>
+              <li>Capture real traffic in learning mode and save useful messages as templates.</li>
+              <li>Edit templates, matching rules, headers, and dynamic response fields.</li>
+              <li>Switch to simulation mode, arm templates in the queue, and run Postman tests against MockFlow.</li>
+            </ol>
+          </div>
+          <div class="panel">
+            <h2>Tech stack</h2>
+            <div class="meta">
+              <span>Python backend</span>
+              <span>Static browser UI</span>
+              <span>HTTP/HTTPS proxying</span>
+              <span>SQLite/JSON storage</span>
+              <span>OpenAPI parsing</span>
+              <span>AI provider provisions</span>
+              <span>Windows tray V1</span>
+            </div>
+            <p class="safety-note">Public portfolio note: this page describes the product and architecture without publishing source code, captured traffic, certificates, tokens, or local workspace data.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>MockFlow case study</span>
+      <span><a href="index.html">Back to portfolio</a></span>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>

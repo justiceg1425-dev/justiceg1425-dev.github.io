@@ -6,6 +6,12 @@ Static GitHub Pages portfolio for three private-source tools:
 - DB Table Compare Pro
 - LLM Test Case Generator
 
+The home page links to deeper public case-study pages:
+
+- `mockflow.html`
+- `db-compare.html`
+- `llm-tcg.html`
+
 This repo is intended to be public. Do not copy private source code, local databases, `.env` files, certificates, API keys, or captured data into this folder.
 
 ## Local Preview
