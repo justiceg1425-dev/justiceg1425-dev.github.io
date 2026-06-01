@@ -1,0 +1,68 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">LLM Test Case Generator dashboard screenshot</title>
+  <desc id="desc">A sanitized demo dashboard for generating test cases from requirements.</desc>
+  <rect width="1440" height="900" fill="#F4F7F8"/>
+  <rect x="0" y="0" width="260" height="900" fill="#0B171A"/>
+  <text x="32" y="52" fill="#FFFFFF" font-family="Inter,Segoe UI,sans-serif" font-size="22" font-weight="850">LLM - TCG</text>
+  <text x="32" y="78" fill="#9FB0B6" font-family="Inter,Segoe UI,sans-serif" font-size="14">Test case generation</text>
+  <g font-family="Inter,Segoe UI,sans-serif" font-size="15" fill="#E5F4F5">
+    <rect x="24" y="126" width="212" height="42" rx="8" fill="#1B2C31"/>
+    <text x="52" y="153">Upload requirements</text>
+    <text x="52" y="214">Parsed preview</text>
+    <text x="52" y="270">Generated cases</text>
+    <text x="52" y="326">History</text>
+    <text x="52" y="382">Exports</text>
+  </g>
+  <text x="304" y="58" fill="#071719" font-family="Inter,Segoe UI,sans-serif" font-size="30" font-weight="850">LLM Test Case Generator</text>
+  <text x="304" y="86" fill="#60747B" font-family="Inter,Segoe UI,sans-serif" font-size="15">Sanitized demo workflow - no private requirements or user data shown</text>
+  <rect x="304" y="118" width="1036" height="116" rx="14" fill="#FFFFFF" stroke="#D5E1E5"/>
+  <text x="330" y="152" fill="#071719" font-family="Inter,Segoe UI,sans-serif" font-size="18" font-weight="800">Upload a BRD, PDF, TXT, or YAML API spec</text>
+  <rect x="330" y="174" width="450" height="36" rx="8" fill="#F7FAFB" stroke="#D5E1E5"/>
+  <text x="348" y="198" fill="#60747B" font-family="Inter,Segoe UI,sans-serif" font-size="14">booking-api-requirements.yaml</text>
+  <rect x="804" y="174" width="176" height="36" rx="8" fill="#18A999"/>
+  <text x="836" y="198" fill="#071719" font-family="Inter,Segoe UI,sans-serif" font-size="14" font-weight="850">Generate cases</text>
+  <rect x="1000" y="174" width="150" height="36" rx="8" fill="#FFFFFF" stroke="#D5E1E5"/>
+  <text x="1028" y="198" fill="#071719" font-family="Inter,Segoe UI,sans-serif" font-size="14" font-weight="750">View history</text>
+  <rect x="304" y="262" width="500" height="256" rx="14" fill="#FFFFFF" stroke="#D5E1E5"/>
+  <text x="330" y="296" fill="#071719" font-family="Inter,Segoe UI,sans-serif" font-size="18" font-weight="800">Parsed requirement preview</text>
+  <g font-family="Inter,Segoe UI,sans-serif" font-size="14">
+    <text x="330" y="334" fill="#0C403D" font-weight="800">Title</text>
+    <text x="440" y="334" fill="#273D44">Booking API validation</text>
+    <text x="330" y="374" fill="#0C403D" font-weight="800">Actors</text>
+    <text x="440" y="374" fill="#273D44">Customer, payment gateway, booking service</text>
+    <text x="330" y="414" fill="#0C403D" font-weight="800">Flows</text>
+    <text x="440" y="414" fill="#273D44">Create booking, payment failure, cancellation</text>
+    <text x="330" y="454" fill="#0C403D" font-weight="800">API</text>
+    <text x="440" y="454" fill="#273D44">POST /bookings, GET /bookings/{id}</text>
+  </g>
+  <rect x="832" y="262" width="508" height="256" rx="14" fill="#FFFFFF" stroke="#D5E1E5"/>
+  <text x="858" y="296" fill="#071719" font-family="Inter,Segoe UI,sans-serif" font-size="18" font-weight="800">Generation summary</text>
+  <g>
+    <rect x="858" y="326" width="132" height="82" rx="12" fill="#E8F7F5"/>
+    <text x="884" y="360" fill="#0C403D" font-family="Inter,Segoe UI,sans-serif" font-size="28" font-weight="850">18</text>
+    <text x="884" y="386" fill="#60747B" font-family="Inter,Segoe UI,sans-serif" font-size="13">test cases</text>
+    <rect x="1014" y="326" width="132" height="82" rx="12" fill="#FFF2D8"/>
+    <text x="1040" y="360" fill="#704500" font-family="Inter,Segoe UI,sans-serif" font-size="28" font-weight="850">6</text>
+    <text x="1040" y="386" fill="#60747B" font-family="Inter,Segoe UI,sans-serif" font-size="13">negative</text>
+    <rect x="1170" y="326" width="132" height="82" rx="12" fill="#E8EDFF"/>
+    <text x="1196" y="360" fill="#315FCE" font-family="Inter,Segoe UI,sans-serif" font-size="28" font-weight="850">4</text>
+    <text x="1196" y="386" fill="#60747B" font-family="Inter,Segoe UI,sans-serif" font-size="13">exports</text>
+  </g>
+  <rect x="858" y="432" width="164" height="40" rx="8" fill="#0C403D"/>
+  <text x="894" y="458" fill="#FFFFFF" font-family="Inter,Segoe UI,sans-serif" font-size="14" font-weight="800">Export Excel</text>
+  <rect x="1038" y="432" width="164" height="40" rx="8" fill="#FFFFFF" stroke="#D5E1E5"/>
+  <text x="1075" y="458" fill="#071719" font-family="Inter,Segoe UI,sans-serif" font-size="14" font-weight="750">QMetry CSV</text>
+  <rect x="304" y="546" width="1036" height="306" rx="14" fill="#FFFFFF" stroke="#D5E1E5"/>
+  <text x="330" y="580" fill="#071719" font-family="Inter,Segoe UI,sans-serif" font-size="18" font-weight="800">Generated test cases</text>
+  <g font-family="Inter,Segoe UI,sans-serif">
+    <rect x="330" y="608" width="984" height="58" rx="10" fill="#E8F7F5"/>
+    <text x="354" y="632" fill="#0C403D" font-size="14" font-weight="850">TC-001 Happy path: create booking</text>
+    <text x="354" y="652" fill="#60747B" font-size="13">Validate booking creation with valid customer and payment details.</text>
+    <rect x="330" y="682" width="984" height="58" rx="10" fill="#FFF2D8"/>
+    <text x="354" y="706" fill="#704500" font-size="14" font-weight="850">TC-002 Negative path: missing payment reference</text>
+    <text x="354" y="726" fill="#60747B" font-size="13">Verify API rejects booking request when required payment reference is absent.</text>
+    <rect x="330" y="756" width="984" height="58" rx="10" fill="#E8EDFF"/>
+    <text x="354" y="780" fill="#315FCE" font-size="14" font-weight="850">TC-003 Edge case: duplicate booking request</text>
+    <text x="354" y="800" fill="#60747B" font-size="13">Confirm duplicate idempotency key returns existing booking response.</text>
+  </g>
+</svg>

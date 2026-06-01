@@ -14,6 +14,8 @@ The home page links to deeper public case-study pages:
 
 This repo is intended to be public. Do not copy private source code, local databases, `.env` files, certificates, API keys, or captured data into this folder.
 
+The DB Compare and LLM_TCG screenshots are sanitized demo screens with synthetic data. They are meant to explain the product experience without publishing private databases, user files, credentials, or generated history.
+
 ## Local Preview
 
 ```powershell
