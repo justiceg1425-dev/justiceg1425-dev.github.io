@@ -55,7 +55,7 @@
             <h3>What MockFlow solves</h3>
             <ul>
               <li>Captures real request and response pairs in learning mode.</li>
-              <li>Creates editable templates that can be reused in future test runs.</li>
+              <li>Creates editable templates that can be reused across test runs.</li>
               <li>Lets testers queue only the templates they want active for a specific flow.</li>
               <li>Supports OpenAPI and Postman collection imports to speed up contract-first testing.</li>
               <li>Adds diagnostics so users can understand why a request matched or missed.</li>
@@ -81,11 +81,11 @@
           </article>
           <article class="panel">
             <h3>UX judgment</h3>
-            <p>Designed for QA users who may not be proxy experts: setup guide, environment doctor, Postman-focused instructions, activity diagnostics, and clear armed-template behavior.</p>
+            <p>Built for QA users who may not be proxy experts: setup guide, environment doctor, Postman-focused instructions, activity diagnostics, and clear armed-template behavior.</p>
           </article>
           <article class="panel">
-            <h3>Production direction</h3>
-            <p>Moved toward desktop-agent packaging, redaction, local-first storage, optional cloud sync, and public documentation without exposing source code or captured data.</p>
+            <h3>Release readiness</h3>
+            <p>Includes desktop-agent packaging work, redaction, local-first storage, purge controls, and public documentation that avoids source code and captured data.</p>
           </article>
         </div>
       </section>
@@ -122,11 +122,11 @@
           </article>
           <article class="panel">
             <h3>Postman workflow</h3>
-            <p>The product direction is local desktop agent first, with Postman and Newman as the execution layer. MockFlow provides the mock response engine and activity diagnostics.</p>
+            <p>MockFlow uses Postman and Newman as the request execution layer while the local agent provides the mock response engine and activity diagnostics.</p>
           </article>
           <article class="panel">
             <h3>Storage and safety</h3>
-            <p>Local JSON and SQLite storage are supported, with sensitive field redaction, purge controls, workspace export/import, and Convex cloud sync provisions planned for team scenarios.</p>
+            <p>Local JSON and SQLite storage are supported, with sensitive field redaction, purge controls, workspace export/import, and explicit safety notes for public sharing.</p>
           </article>
         </div>
       </section>
@@ -135,7 +135,7 @@
         <div class="section-intro">
           <p class="eyebrow">Product workflow</p>
           <h2>From setup to simulated responses.</h2>
-          <p>MockFlow is designed around a local agent and a browser dashboard. The public portfolio can show the workflow while captured traffic, certificates, tokens, and source code stay private.</p>
+          <p>MockFlow uses a local agent and a browser dashboard. The public portfolio shows the workflow while captured traffic, certificates, tokens, and source code stay private.</p>
         </div>
         <div class="project-grid">
           <article class="project-card">
@@ -167,7 +167,7 @@
           <div>
             <p class="eyebrow">Architecture</p>
             <h2>Local proxy, browser dashboard, template engine.</h2>
-            <p class="lead">The design keeps traffic capture local for privacy and practicality. A future cloud layer can sync sanitized workspaces, but the runtime that Postman talks to belongs on the tester machine.</p>
+            <p class="lead">The design keeps traffic capture local for privacy and practicality. The runtime that Postman talks to belongs on the tester machine, while the dashboard provides review, template editing, and simulation controls.</p>
           </div>
           <div class="panel architecture">
             <div class="flow-row">
@@ -181,7 +181,7 @@
               <div class="flow-box"><strong>Simulation queue</strong><br>Active mock set for the current test.</div>
             </div>
             <div class="flow-row">
-              <div class="flow-box"><strong>OpenAPI / Postman imports</strong><br>Generate first-pass templates and scenarios.</div>
+              <div class="flow-box"><strong>OpenAPI / Postman imports</strong><br>Create reviewable templates and scenarios.</div>
               <div class="flow-arrow">-&gt;</div>
               <div class="flow-box"><strong>Review workflow</strong><br>Approve, edit, flag duplicates, and promote.</div>
             </div>
@@ -210,8 +210,8 @@
               <span>HTTP/HTTPS proxying</span>
               <span>SQLite/JSON storage</span>
               <span>OpenAPI parsing</span>
-              <span>AI provider provisions</span>
-              <span>Windows tray V1</span>
+              <span>Scenario review workflow</span>
+              <span>Windows tray agent</span>
             </div>
             <p class="safety-note">Public portfolio note: this page describes the product and architecture without publishing source code, captured traffic, certificates, tokens, or local workspace data.</p>
           </div>
@@ -244,28 +244,28 @@
         </div>
       </section>
 
-      <section class="section" id="roadmap">
+      <section class="section" id="recruiter-notes">
         <div class="section-intro">
-          <p class="eyebrow">Product direction</p>
-          <h2>Local first, cloud optional.</h2>
-          <p>The public site is the front door. The proxy, capture engine, certificates, and local workspace stay inside the desktop agent unless a team sync option is explicitly configured later.</p>
+          <p class="eyebrow">Recruiter notes</p>
+          <h2>What the MockFlow case study proves.</h2>
+          <p>The public page focuses on product behavior and engineering choices that can be discussed safely without publishing implementation details, captured payloads, or local certificates.</p>
         </div>
         <div class="feature-list">
           <article class="panel">
-            <h3>Desktop agent</h3>
-            <p>Tray controls, installer, start/stop/status, logs, and dashboard launch for testers who should not need command-line setup.</p>
+            <h3>Service virtualization thinking</h3>
+            <p>The project models the full tester flow: capture, promote, edit, arm templates, simulate, and inspect why a request matched or missed.</p>
           </article>
           <article class="panel">
             <h3>Proxy reliability</h3>
             <p>HTTP/HTTPS capture, passthrough, queue-only simulation, no-match diagnostics, and certificate guidance.</p>
           </article>
           <article class="panel">
-            <h3>Scenario intelligence</h3>
+            <h3>Scenario review</h3>
             <p>OpenAPI, captured traffic, duplicate governance, needs-edit negative scenarios, and provider-aware AI refinement.</p>
           </article>
           <article class="panel">
-            <h3>Team sync later</h3>
-            <p>Convex or another cloud store can support shared workspaces after the local tester workflow is stable and safe.</p>
+            <h3>Usability for QA teams</h3>
+            <p>Environment checks, Postman instructions, clear simulation queues, response proof headers, and safe data controls make the tool approachable for non-specialists.</p>
           </article>
         </div>
       </section>
