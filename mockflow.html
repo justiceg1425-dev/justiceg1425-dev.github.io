@@ -82,8 +82,16 @@
             <p>Saved templates can be armed in a queue so only selected endpoints respond from MockFlow. This supports controlled end-to-end flows while keeping the full template bank intact.</p>
           </article>
           <article class="panel">
+            <h3>Queue-only matching</h3>
+            <p>Simulation mode only responds from armed templates. If a matching template exists in the bank but was not queued, MockFlow shows a no-match diagnostic instead of silently returning the saved response.</p>
+          </article>
+          <article class="panel">
             <h3>Scenario intelligence</h3>
             <p>OpenAPI documents and captured workspace messages can generate reviewable scenarios, duplicate flags, coverage maps, and needs-edit indicators for inferred negative cases.</p>
+          </article>
+          <article class="panel">
+            <h3>Large response handling</h3>
+            <p>Very large payloads are stored outside the main workspace state so the UI stays usable. Users can page through large bodies for edits while simulation still returns the full response.</p>
           </article>
           <article class="panel">
             <h3>Postman workflow</h3>
@@ -91,7 +99,7 @@
           </article>
           <article class="panel">
             <h3>Storage and safety</h3>
-            <p>Local JSON and SQLite storage are supported, with sensitive field redaction, workspace export/import, and Convex cloud sync provisions planned for team scenarios.</p>
+            <p>Local JSON and SQLite storage are supported, with sensitive field redaction, purge controls, workspace export/import, and Convex cloud sync provisions planned for team scenarios.</p>
           </article>
         </div>
       </section>
