@@ -416,6 +416,25 @@ h3 {
   font-size: 0.86rem;
 }
 
+.release-callout {
+  display: grid;
+  gap: 5px;
+  margin-top: 16px;
+  padding: 16px 18px;
+  border: 1px solid rgba(18, 170, 148, 0.28);
+  border-radius: 12px;
+  background: #effaf7;
+  color: var(--ink);
+}
+
+.release-callout strong {
+  color: var(--brand-dark);
+}
+
+.release-callout span {
+  color: var(--muted);
+}
+
 .two-column {
   display: grid;
   grid-template-columns: minmax(0, 0.88fr) minmax(360px, 1.12fr);
