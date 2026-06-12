@@ -32,6 +32,7 @@
           <div class="button-row">
             <a class="button primary" href="#workflow">How it works</a>
             <a class="button" href="#setup">Setup and usage</a>
+            <a class="button" href="#release">Beta status</a>
             <a class="button" href="#postman">Postman setup</a>
           </div>
           <div class="stat-grid">
@@ -42,7 +43,7 @@
           </div>
           <article class="release-callout">
             <strong>Beta milestone reached:</strong>
-            <span>MockFlow v0.1.0-beta has passed install, capture, simulation, and packaging QA. Installer access is kept private and available on request.</span>
+            <span>MockFlow v0.1.0-beta has passed fresh Windows installer testing, HTTP/HTTPS capture, simulation, large payload, licensing, and release QA. Installer access is kept private and available on request.</span>
           </article>
         </div>
         <img src="assets/mockflow-simulation.png" alt="MockFlow simulation workbench">
@@ -131,6 +132,49 @@
           <article class="panel">
             <h3>Storage and safety</h3>
             <p>Local JSON and SQLite storage are supported, with sensitive field redaction, purge controls, workspace export/import, and explicit safety notes for public sharing.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="release">
+        <div class="section-intro">
+          <p class="eyebrow">Beta release status</p>
+          <h2>0.1.0 beta is release-ready for controlled demos.</h2>
+          <p>MockFlow has moved past prototype status into a private beta candidate. The current build is intended for controlled walkthroughs and recruiter discussions, not public open-source distribution.</p>
+        </div>
+        <div class="feature-list">
+          <article class="panel status-panel">
+            <h3>Validated in beta QA</h3>
+            <ul>
+              <li>Fresh Windows installer build and install.</li>
+              <li>HTTP and HTTPS capture through Postman.</li>
+              <li>Template promotion, editing, and armed simulation queue.</li>
+              <li>No-match diagnostics and unarmed-template diagnostics.</li>
+              <li>Large response handling and full-response simulation fidelity.</li>
+              <li>Community, Team, and Enterprise beta edition gates.</li>
+            </ul>
+          </article>
+          <article class="panel status-panel">
+            <h3>Kept private by design</h3>
+            <ul>
+              <li>Source code and installer artifacts are not published on this portfolio site.</li>
+              <li>Captured traffic, API keys, certificates, local databases, and logs are excluded.</li>
+              <li>Demo visuals use sanitized data and product screens only.</li>
+              <li>Installer access is available on request for controlled review.</li>
+            </ul>
+          </article>
+          <article class="panel status-panel">
+            <h3>Post-beta roadmap</h3>
+            <ul>
+              <li>Signed licensing or a license-server-backed entitlement model.</li>
+              <li>Production-grade team/cloud sync beyond the current Convex scaffold.</li>
+              <li>Signed/notarized macOS packaging.</li>
+              <li>Deeper AI scenario quality tuning and provider cost handling.</li>
+            </ul>
+          </article>
+          <article class="panel status-panel">
+            <h3>Why local-first</h3>
+            <p>MockFlow needs to sit between local tools like Postman and target APIs. A public hosted-only version would not capture local traffic reliably, so the product direction is a desktop/local agent first, with optional cloud sync later.</p>
           </article>
         </div>
       </section>

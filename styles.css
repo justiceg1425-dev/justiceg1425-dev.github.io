@@ -455,6 +455,14 @@ h3 {
   color: var(--muted);
 }
 
+.status-panel {
+  border-color: rgba(24, 169, 153, 0.28);
+}
+
+.status-panel h3 {
+  color: var(--brand-dark);
+}
+
 .panel ul,
 .panel ol {
   margin: 14px 0 0;

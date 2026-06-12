@@ -16,6 +16,8 @@ This repo is safe to publish. Do not copy private source code, local databases, 
 
 The DB Compare and LLM_TCG screenshots are sanitized demo screens with synthetic data. They are meant to explain the product experience without publishing private databases, user files, credentials, or generated history.
 
+MockFlow is presented as a `0.1.0-beta` private release candidate. The portfolio can mention the installer, QA status, and architecture, but do not publish installer artifacts, source code, local workspaces, generated certificates, logs, or captured API payloads here unless a separate release decision is made.
+
 ## Local Preview
 
 ```powershell
