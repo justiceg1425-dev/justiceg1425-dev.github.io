@@ -554,6 +554,35 @@ h3 { margin-bottom: 8px; font-size: 1.05rem; }
 }
 .cbtn-primary:hover, .cbtn-outline:hover { opacity: .82; }
 
+/* ─── Interactive demo affordances ──────────────────────────────────────── */
+/* subtle ring — used on dark-bg elements like the MockFlow tab row */
+@keyframes cta-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
+  65%  { box-shadow: 0 0 0 9px rgba(74,222,128,0); }
+  100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
+}
+.cta-pulse { animation: cta-pulse 2s ease-out infinite; }
+
+/* strong dual-ring — used on green buttons where green-on-green would be invisible */
+@keyframes cta-pulse-strong {
+  0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0.7), 0 0 0 0 rgba(74,222,128,0.5); }
+  55%  { box-shadow: 0 0 0 8px rgba(255,255,255,0.1), 0 0 0 18px rgba(74,222,128,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,255,255,0),   0 0 0 0  rgba(74,222,128,0); }
+}
+.cta-pulse-strong { animation: cta-pulse-strong 1.7s ease-out infinite; }
+
+.demo-hint-bar {
+  display: flex; align-items: center; gap: 8px; padding: 8px 13px;
+  margin-bottom: 18px;
+  background: var(--brand-dim); border: 1px solid var(--brand-border);
+  border-radius: 8px; font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; color: var(--brand); letter-spacing: .07em; text-transform: uppercase;
+}
+.hint-dot {
+  width: 6px; height: 6px; flex-shrink: 0; border-radius: 50%;
+  background: var(--brand); animation: glow 1.5s ease-in-out infinite;
+}
+
 /* ─── Animations ─────────────────────────────────────────────────────────── */
 @keyframes blink    { 0%,49%{opacity:1} 50%,100%{opacity:0} }
 @keyframes fadeUp   { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }

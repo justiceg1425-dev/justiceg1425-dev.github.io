@@ -106,9 +106,10 @@
             <a class="detail-link" href="mockflow.html">View full case study →</a>
           </div>
           <div class="tool-demo">
-            <div class="tab-row">
-              <button class="tab-btn active" onclick="setMfMode('sim',this)">Simulation mode</button>
+            <div class="demo-hint-bar"><span class="hint-dot"></span>Interactive demo · toggle between modes</div>
+            <div class="tab-row cta-pulse" id="mf-tab-row">
               <button class="tab-btn" onclick="setMfMode('learn',this)">Learning mode</button>
+              <button class="tab-btn active" onclick="setMfMode('sim',this)">Simulation mode</button>
             </div>
             <div id="mf-sim">
               <div class="demo-req">
@@ -145,9 +146,10 @@
       <div class="tool-card" id="tool-testweave">
         <div class="tool-card-grid rev">
           <div class="tool-demo">
+            <div class="demo-hint-bar"><span class="hint-dot"></span>Interactive demo · generate test cases</div>
             <div class="tw-header">
               <span class="tw-file">📄 booking_requirements.docx</span>
-              <button class="generate-btn" id="tw-btn" onclick="toggleTW()">Generate cases</button>
+              <button class="generate-btn cta-pulse-strong" id="tw-btn" onclick="toggleTW()">Generate cases</button>
             </div>
             <div class="req-block">
               <strong style="color:var(--ink);font-size:13px">REQ-001 — Flight search</strong><br>
@@ -220,7 +222,8 @@
                 </div>
               </div>
             </div>
-            <button class="run-btn" id="db-btn" onclick="toggleDB()">Run reconciliation</button>
+            <div class="demo-hint-bar"><span class="hint-dot"></span>Interactive demo · run the reconciliation</div>
+            <button class="run-btn cta-pulse-strong" id="db-btn" onclick="toggleDB()">Run reconciliation</button>
             <div id="db-results" style="display:none">
               <div class="db-results">
                 <div class="db-stats">
@@ -462,6 +465,7 @@
 
     /* ── MockFlow mode toggle ── */
     function setMfMode(mode, btn) {
+      document.getElementById('mf-tab-row').classList.remove('cta-pulse');
       document.querySelectorAll('#tool-mockflow .tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       document.getElementById('mf-sim').style.display   = mode === 'sim'   ? '' : 'none';
@@ -481,6 +485,7 @@
       twGenerated = !twGenerated;
       const out = document.getElementById('tw-output');
       const btn = document.getElementById('tw-btn');
+      btn.classList.remove('cta-pulse-strong');
       if (twGenerated) {
         btn.textContent = 'Reset';
         out.innerHTML = '<div class="tc-list">' + twCases.map((c, i) =>
@@ -502,6 +507,7 @@
       dbRun = !dbRun;
       const results = document.getElementById('db-results');
       const btn = document.getElementById('db-btn');
+      btn.classList.remove('cta-pulse-strong');
       if (dbRun) {
         btn.textContent = 'Reset';
         results.style.display = '';
