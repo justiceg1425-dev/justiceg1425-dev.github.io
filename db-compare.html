@@ -3,9 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DB Table Compare Pro Case Study - Justice Gnanamuttu</title>
-    <meta name="description" content="DB Table Compare Pro case study: Streamlit database reconciliation across Oracle and MySQL with mappings, batch processing, rules, exports, and AI summaries.">
+    <title>DB Compare Pro Case Study - Justice Gnanamuttu</title>
+    <meta name="description" content="DB Compare Pro case study: FastAPI and Next.js database reconciliation tool for Oracle, MySQL, and PostgreSQL with batch processing, AI-assisted mismatch analysis, and paginated DuckDB result storage.">
     <link rel="icon" href="assets/mockflow-mark.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -27,20 +30,20 @@
         <div>
           <a class="breadcrumb" href="index.html">Back to portfolio</a>
           <p class="eyebrow">Database reconciliation</p>
-          <h1>DB Table Compare Pro</h1>
-          <p class="lead">A Streamlit application for validating source and target database tables across Oracle and MySQL, with mapping, batching, per-column rules, exports, and AI-assisted mismatch analysis.</p>
+          <h1>DB Compare Pro</h1>
+          <p class="lead">A FastAPI and Next.js database reconciliation tool for validating source and target tables across Oracle, MySQL, and PostgreSQL — with column mapping, batch processing, paginated DuckDB result storage, and AI-assisted mismatch analysis.</p>
           <div class="button-row">
             <a class="button primary" href="#features">Explore features</a>
-            <a class="button" href="#setup">Setup and usage</a>
+            <a class="button" href="#setup">Setup and architecture</a>
           </div>
           <div class="stat-grid">
             <article class="stat"><strong>Oracle</strong><span>enterprise database support</span></article>
             <article class="stat"><strong>MySQL</strong><span>cross-database comparison</span></article>
-            <article class="stat"><strong>Batch</strong><span>large table strategies</span></article>
-            <article class="stat"><strong>AI</strong><span>local mismatch summaries</span></article>
+            <article class="stat"><strong>DuckDB</strong><span>paginated result storage</span></article>
+            <article class="stat"><strong>AI</strong><span>Groq and Ollama analysis</span></article>
           </div>
         </div>
-        <img src="assets/db-compare-dashboard.svg" alt="DB Table Compare dashboard screenshot with sanitized demo data">
+        <img src="assets/db-compare-dashboard.svg" alt="DB Compare Pro operations console with sanitized demo data">
       </section>
 
       <section class="section alt">
@@ -48,16 +51,16 @@
           <div class="section-intro">
             <p class="eyebrow">Problem</p>
             <h2>Data reconciliation gets messy when schemas and systems differ.</h2>
-            <p>QA and data teams often need to prove that migrations, integrations, ETL jobs, or system replacements produce equivalent data. Manual comparison in spreadsheets does not scale, especially when tables have different column names, business rules, filters, and row volumes.</p>
+            <p>QA and data teams often need to prove that migrations, integrations, ETL jobs, or system replacements produce equivalent data. Manual comparison in spreadsheets does not scale, especially when tables have different column names, business rules, filters, and large row volumes that cannot fit in memory.</p>
           </div>
           <article class="panel">
             <h3>What the tool solves</h3>
             <ul>
-              <li>Compares source and target rows using single or composite keys.</li>
-              <li>Maps columns across different table schemas.</li>
+              <li>Compares source and target rows using single or composite keys across Oracle, MySQL, and PostgreSQL.</li>
+              <li>Maps columns across different table schemas and applies per-column comparison rules.</li>
               <li>Supports tolerance, trimming, case-insensitive comparison, and derived columns.</li>
-              <li>Processes larger datasets through batching strategies.</li>
-              <li>Summarizes mismatch patterns with local LLM assistance.</li>
+              <li>Stores comparison results in DuckDB so large result sets are paginated without re-running queries.</li>
+              <li>Summarises mismatch patterns using Groq (primary) or Ollama (local fallback) with full privacy control.</li>
             </ul>
           </article>
         </div>
@@ -67,20 +70,20 @@
         <div class="section-intro">
           <p class="eyebrow">Case-study snapshot</p>
           <h2>Why this matters for data QA work.</h2>
-          <p>DB Table Compare Pro came from a familiar testing problem: proving that two systems agree when their schemas, keys, filters, and business rules do not line up neatly. The project shows adapter design, reconciliation rules, scale-aware batching, and reviewer-friendly outputs.</p>
+          <p>DB Compare Pro grew from a real testing problem: proving that two systems agree when their schemas, keys, filters, and business rules do not line up neatly. The refactored version adds a purpose-built FastAPI backend and Next.js operations console around the comparison engine, replacing the original Streamlit prototype with a maintainable, extensible architecture.</p>
         </div>
         <div class="feature-list">
           <article class="panel">
             <h3>Data QA understanding</h3>
-            <p>Models the real problems in migration and integration testing: mismatched schemas, composite keys, null handling, numeric tolerances, missing rows, and derived values.</p>
+            <p>Models the real problems in migration and integration testing: mismatched schemas, composite keys, null handling, numeric tolerances, missing rows, schema drift, and derived values.</p>
           </article>
           <article class="panel">
             <h3>Architecture discipline</h3>
-            <p>Separates database access, comparison logic, batching, validation, mapping, export, and AI analysis into clear responsibilities.</p>
+            <p>Separates database adapters, comparison engine, batch strategies, result storage, ETL rules, AI analysis, and the Next.js console into clear, independently testable responsibilities.</p>
           </article>
           <article class="panel">
-            <h3>Operational usefulness</h3>
-            <p>Creates outputs that testers and analysts can actually review: filtered mismatch tables, summary counts, Excel/CSV exports, and AI-generated discrepancy explanations.</p>
+            <h3>Scale-aware design</h3>
+            <p>DuckDB stores paginated comparison results so the UI can browse large mismatch sets without re-running the comparison query. Pandas, Polars, and Dask handle different data scale profiles.</p>
           </article>
           <article class="panel">
             <h3>Safe sharing</h3>
@@ -96,28 +99,36 @@
         </div>
         <div class="feature-list">
           <article class="panel">
-            <h3>Connection workflow</h3>
-            <p>Users connect source and target systems, select database type, authenticate, and choose tables through a Streamlit UI built for tester and analyst workflows.</p>
+            <h3>Multi-database connections</h3>
+            <p>Connects Oracle, MySQL, and PostgreSQL source and target systems through a wizard-style Next.js console. Connection profiles are saved locally so frequently used systems do not need re-entry.</p>
           </article>
           <article class="panel">
             <h3>Flexible comparison setup</h3>
-            <p>Supports key selection, compare-column selection, custom mappings, filters, derived columns, row hashes, and per-column comparison behavior.</p>
+            <p>Supports key selection, compare-column selection, custom mappings, filters, derived columns, row hashes, and per-column comparison rules including tolerance and case-insensitive matching.</p>
           </article>
           <article class="panel">
             <h3>Batch processing</h3>
-            <p>Handles practical data sizes with numeric range batching, ordered seek batching, and row-based estimation to avoid one giant comparison pass.</p>
+            <p>Handles practical data sizes with numeric range batching, ordered seek batching, and row-based estimation to avoid one giant comparison pass on large tables.</p>
           </article>
           <article class="panel">
-            <h3>Interactive result review</h3>
-            <p>Results can be reviewed through sortable/filterable tables, mismatch summaries, per-field diffs, CSV output, and Excel reports.</p>
+            <h3>Paginated result explorer</h3>
+            <p>Comparison results — missing source rows, missing target rows, and field-level mismatches — are stored in DuckDB and served through paginated API endpoints so the frontend stays responsive on large result sets.</p>
+          </article>
+          <article class="panel">
+            <h3>Schema drift detection</h3>
+            <p>Detects column additions, removals, and type changes between source and target schemas before or during comparison runs, surfacing structural differences alongside data mismatches.</p>
           </article>
           <article class="panel">
             <h3>AI-assisted analysis</h3>
-            <p>Local Ollama integration helps summarize discrepancies, explain mismatch causes, and support natural-language-to-SQL filter creation.</p>
+            <p>Groq (primary) or Ollama (local privacy-preserving fallback) summarises discrepancy patterns, explains probable mismatch causes, and supports natural-language-to-SQL filter queries in the result explorer.</p>
           </article>
           <article class="panel">
-            <h3>Self-test coverage</h3>
-            <p>The project includes tests for comparison behavior, duplicate detection, auto-mapping, numeric tolerance, row hashing, SQL validation, and SQLite integration flows.</p>
+            <h3>Duplicate detection</h3>
+            <p>Identifies duplicate rows in source and target datasets as part of the comparison pipeline, flagging data quality issues that can cause inflated mismatch counts.</p>
+          </article>
+          <article class="panel">
+            <h3>Test coverage</h3>
+            <p>pytest covers comparison behaviour, duplicate detection, auto-mapping, numeric tolerance, row hashing, ETL rules, and database adapter logic. Playwright smoke tests cover the Next.js frontend.</p>
           </article>
         </div>
       </section>
@@ -130,17 +141,17 @@
         </div>
         <div class="project-grid">
           <article class="project-card">
-            <img src="assets/db-compare-dashboard.svg" alt="DB Compare dashboard screenshot">
+            <img src="assets/db-compare-dashboard.svg" alt="DB Compare Pro operations console">
             <div class="body">
-              <h3>Comparison dashboard</h3>
-              <p>Source/target connection state, comparison setup, mismatch table, and AI summary in one reviewer-friendly flow.</p>
+              <h3>Operations console</h3>
+              <p>Next.js step-by-step wizard covering connection, table selection, column mapping, rules, batch options, run monitoring, and the paginated result explorer.</p>
             </div>
           </article>
           <article class="project-card">
-            <img src="assets/db-compare-visual.svg" alt="DB Compare reconciliation visual">
+            <img src="assets/db-compare-visual.svg" alt="DB Compare reconciliation architecture visual">
             <div class="body">
-              <h3>Reconciliation logic</h3>
-              <p>A visual explanation of how source rows, target rows, mismatch highlighting, and summary generation fit together.</p>
+              <h3>Reconciliation engine</h3>
+              <p>A visual explanation of how source rows, target rows, batch strategies, DuckDB result storage, and AI summary generation fit together in the FastAPI backend.</p>
             </div>
           </article>
         </div>
@@ -150,24 +161,24 @@
         <div class="two-column">
           <div>
             <p class="eyebrow">Architecture</p>
-            <h2>Streamlit front end with comparison modules behind it.</h2>
-            <p class="lead">The application separates UI concerns from database adapters, comparison logic, mapping, profiling, validation, and AI assistance. The result is a maintainable structure for data QA workflows.</p>
+            <h2>Next.js operations console over a FastAPI comparison engine.</h2>
+            <p class="lead">The refactored architecture separates the Next.js UI from the FastAPI backend, which owns the comparison engine, database adapters, DuckDB result store, and AI analysis. Legacy Streamlit UI remains as a fallback interface only.</p>
           </div>
           <div class="panel architecture">
             <div class="flow-row">
-              <div class="flow-box"><strong>Streamlit UI</strong><br>Connection setup, mapping, options, and results.</div>
+              <div class="flow-box"><strong>Next.js console</strong><br>Wizard steps: connect, map, rules, run, results.</div>
               <div class="flow-arrow">-&gt;</div>
-              <div class="flow-box"><strong>DB adapters</strong><br>Oracle and MySQL connection handling.</div>
+              <div class="flow-box"><strong>FastAPI backend</strong><br>Comparison runs, paginated results, schema drift.</div>
             </div>
             <div class="flow-row">
-              <div class="flow-box"><strong>Comparison engine</strong><br>Keys, mappings, rules, batches, and row hashes.</div>
+              <div class="flow-box"><strong>Comparison engine</strong><br>Keys, mappings, ETL rules, batches, row hashes.</div>
               <div class="flow-arrow">-&gt;</div>
-              <div class="flow-box"><strong>Results layer</strong><br>Mismatches, missing rows, exports, summaries.</div>
+              <div class="flow-box"><strong>DuckDB result store</strong><br>Paginated mismatches, missing rows, run history.</div>
             </div>
             <div class="flow-row">
-              <div class="flow-box"><strong>Local LLM</strong><br>Optional privacy-preserving analysis.</div>
+              <div class="flow-box"><strong>DB adapters</strong><br>Oracle, MySQL, PostgreSQL connections.</div>
               <div class="flow-arrow">-&gt;</div>
-              <div class="flow-box"><strong>Tester insight</strong><br>Root-cause hints and NL-to-SQL filters.</div>
+              <div class="flow-box"><strong>AI analysis</strong><br>Groq (primary) or Ollama (local fallback).</div>
             </div>
           </div>
         </div>
@@ -178,33 +189,39 @@
           <div class="panel">
             <h2>Setup and use</h2>
             <ol>
-              <li>Create a Python virtual environment and install requirements.</li>
-              <li>Configure Oracle/MySQL client requirements and optional Ollama settings.</li>
-              <li>Run the Streamlit app locally.</li>
-              <li>Connect source and target databases.</li>
-              <li>Select tables, keys, compare columns, mappings, filters, and rules.</li>
-              <li>Run comparison, review mismatches, export results, and optionally generate AI summaries.</li>
+              <li>Start the development stack using the project script (<code>.\start-dev.ps1</code>).</li>
+              <li>Open the Next.js console and connect source and target databases through the wizard.</li>
+              <li>Select tables, choose keys, configure column mappings, filters, and comparison rules.</li>
+              <li>Run the comparison and monitor progress through the run monitor.</li>
+              <li>Browse paginated mismatches, missing rows, and field-level diffs in the result explorer.</li>
+              <li>Export results to CSV or Excel, or generate AI summaries for root-cause analysis.</li>
             </ol>
           </div>
           <div class="panel">
             <h2>Tech stack</h2>
             <div class="meta">
               <span>Python</span>
-              <span>Streamlit</span>
-              <span>Pandas</span>
+              <span>FastAPI</span>
+              <span>Next.js 15</span>
+              <span>TypeScript</span>
+              <span>DuckDB</span>
+              <span>Pandas / Polars / Dask</span>
               <span>Oracle driver</span>
               <span>PyMySQL</span>
+              <span>psycopg2</span>
+              <span>Groq</span>
               <span>Ollama</span>
-              <span>Pytest</span>
+              <span>pytest</span>
+              <span>Playwright</span>
             </div>
-            <p class="safety-note">This page describes capability and architecture only. It does not include database credentials, `.env` files, schemas, or customer data.</p>
+            <p class="safety-note">This page describes capability and architecture only. It does not include database credentials, <code>.env</code> files, schemas, or customer data.</p>
           </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <span>DB Table Compare Pro case study</span>
+      <span>DB Compare Pro case study</span>
       <span><a href="index.html">Back to portfolio</a></span>
     </footer>
     <script src="app.js"></script>
