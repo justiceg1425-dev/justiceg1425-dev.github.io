@@ -580,3 +580,142 @@ h3 {
     transform: rotate(90deg);
   }
 }
+
+.profile-hero h1 {
+  max-width: 820px;
+  font-size: clamp(2.45rem, 5vw, 5.5rem);
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.compact-intro {
+  margin-bottom: 0;
+}
+
+.impact-panel {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #f8fbfb;
+  box-shadow: 0 14px 34px rgba(8, 31, 38, 0.07);
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.metric {
+  min-height: 132px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.metric strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--brand-dark);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.metric span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.experience-card {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 14px 34px rgba(8, 31, 38, 0.07);
+}
+
+.experience-card.current {
+  border-color: rgba(24, 169, 153, 0.42);
+  background: #f4fbfa;
+}
+
+.role-date {
+  display: inline-flex;
+  margin-bottom: 12px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #eef7f7;
+  color: var(--brand-dark);
+  font-size: 0.78rem;
+  font-weight: 850;
+}
+
+.company {
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-weight: 720;
+}
+
+.experience-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #354a51;
+}
+
+.experience-card li + li {
+  margin-top: 8px;
+}
+
+.credential-strip,
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.credential-strip span,
+.contact-links a {
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: #3e555c;
+  font-size: 0.82rem;
+  font-weight: 760;
+  text-decoration: none;
+}
+
+.contact-links a:hover {
+  border-color: rgba(24, 169, 153, 0.5);
+  color: var(--brand-dark);
+}
+
+@media (max-width: 1100px) {
+  .profile-grid,
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metric {
+    min-height: auto;
+  }
+}

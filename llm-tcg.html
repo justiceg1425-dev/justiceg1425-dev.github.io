@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>LLM Test Case Generator Case Study - Justice Gnanamuttu</title>
-    <meta name="description" content="LLM Test Case Generator case study: Streamlit app for generating structured test cases from BRDs, PDFs, text files, and YAML API specifications.">
+    <title>TestWeave Case Study - Justice Gnanamuttu</title>
+    <meta name="description" content="TestWeave case study: FastAPI and Next.js QA platform for extracting requirements, generating reviewed test coverage, preserving workspace history, and exporting to delivery tools.">
     <link rel="icon" href="assets/mockflow-mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -26,38 +26,38 @@
       <section class="detail-hero">
         <div>
           <a class="breadcrumb" href="index.html">Back to portfolio</a>
-          <p class="eyebrow">AI-assisted test design</p>
-          <h1>LLM Test Case Generator</h1>
-          <p class="lead">A Streamlit application that parses BRDs and API specifications, generates structured test cases, stores version history, and exports test assets in QA-friendly formats.</p>
+          <p class="eyebrow">AI-assisted test design platform</p>
+          <h1>TestWeave</h1>
+          <p class="lead">A FastAPI and Next.js application that turns requirement documents into reviewed, versioned, workspace-based test coverage with exports and delivery integrations.</p>
           <div class="button-row">
             <a class="button primary" href="#features">Explore features</a>
-            <a class="button" href="#setup">Setup and usage</a>
+            <a class="button" href="#setup">Setup and architecture</a>
           </div>
           <div class="stat-grid">
-            <article class="stat"><strong>BRD</strong><span>document-driven input</span></article>
-            <article class="stat"><strong>YAML</strong><span>API spec parsing</span></article>
-            <article class="stat"><strong>SQLite</strong><span>version history</span></article>
-            <article class="stat"><strong>QMetry</strong><span>export/integration target</span></article>
+            <article class="stat"><strong>Next.js</strong><span>primary web client</span></article>
+            <article class="stat"><strong>FastAPI</strong><span>authorized API boundary</span></article>
+            <article class="stat"><strong>SQLite/Postgres</strong><span>scoped persistence</span></article>
+            <article class="stat"><strong>QMetry/Jira</strong><span>delivery integrations</span></article>
           </div>
         </div>
-        <img src="assets/llm-tcg-dashboard.svg" alt="LLM Test Case Generator dashboard screenshot with sanitized demo data">
+        <img src="assets/testweave-dashboard.png" alt="TestWeave dashboard with workspace coverage metrics">
       </section>
 
       <section class="section alt">
         <div class="two-column">
           <div class="section-intro">
             <p class="eyebrow">Problem</p>
-            <h2>Manual test case authoring is slow and inconsistent.</h2>
-            <p>When teams receive BRDs, PDFs, text requirements, or API specs, testers still need to extract flows, preconditions, edge cases, and expected results. That work is valuable, but the initial drafting can consume time that could be spent reviewing quality and coverage.</p>
+            <h2>AI-generated test cases need governance, context, and handoff paths.</h2>
+            <p>My original LLM_TCG prototype solved the first draft problem. TestWeave expands that idea into an application workflow where teams can authenticate, choose a workspace, extract requirements, review generated coverage, save versions, compare history, and export into real QA delivery channels.</p>
           </div>
           <article class="panel">
-            <h3>What the tool solves</h3>
+            <h3>What the application solves</h3>
             <ul>
-              <li>Accepts requirement documents and YAML API specs.</li>
-              <li>Parses structured requirements into flows, actors, preconditions, and triggers.</li>
-              <li>Generates reviewable test cases through LLM prompts and deterministic helpers.</li>
-              <li>Maintains version history per uploaded file.</li>
-              <li>Exports in formats that can move into downstream QA tools.</li>
+              <li>Moves generation from one-off prompt output into a scoped project and workspace model.</li>
+              <li>Accepts DOCX, PDF, TXT, YAML, and YML sources with upload validation and parser limits.</li>
+              <li>Combines deterministic coverage with selectable Ollama or Groq generation.</li>
+              <li>Preserves extracted requirements, saved cases, version history, and audit events.</li>
+              <li>Exports to JSON, XLSX, QMetry CSV, Gherkin feature content, and workspace backups.</li>
             </ul>
           </article>
         </div>
@@ -66,25 +66,25 @@
       <section class="section">
         <div class="section-intro">
           <p class="eyebrow">Case-study snapshot</p>
-          <h2>What this project demonstrates to a hiring team.</h2>
-          <p>LLM Test Case Generator shows how AI can be wrapped in a controlled QA workflow: intake, parsing, generation, review, version history, and export instead of one-off prompt output.</p>
+          <h2>Why this matters for test design teams.</h2>
+          <p>TestWeave focuses on the part that usually gets skipped in AI demos: governance after the first generated draft. It adds authorization, workspace-level data, reviewable outputs, operational scripts, and integration readiness around the test generation workflow.</p>
         </div>
         <div class="feature-list">
           <article class="panel">
-            <h3>AI workflow design</h3>
-            <p>Uses LLM generation as one step in a reviewable pipeline, keeping testers in control of generated cases, edits, versions, and downstream exports.</p>
+            <h3>Product architecture</h3>
+            <p>Splits the system into a Next.js frontend, FastAPI backend, SQLAlchemy persistence layer, Alembic migrations, integration worker, and a legacy Streamlit compatibility client.</p>
           </article>
           <article class="panel">
-            <h3>Requirements analysis</h3>
-            <p>Turns BRDs and API specs into structured testing assets by extracting flows, preconditions, expected behavior, edge cases, and endpoint context.</p>
+            <h3>Governed AI workflow</h3>
+            <p>Supports provider health, user or workspace provider preferences, deterministic fallback, normalized generated cases, and tester review before save or export.</p>
           </article>
           <article class="panel">
-            <h3>QA platform thinking</h3>
-            <p>Supports multiple handoff formats including Excel, JSON, Gherkin JSON, and QMetry CSV so generated cases can move into real test-management workflows.</p>
+            <h3>Team QA concerns</h3>
+            <p>Includes platform admin, project admin, editor, and viewer roles; encrypted provider and integration secrets; audit logs; and project/workspace isolation.</p>
           </article>
           <article class="panel">
-            <h3>Safe portfolio positioning</h3>
-            <p>Shows synthetic examples and sanitized visuals without exposing private BRDs, generated customer scenarios, login configuration, local databases, or API credentials.</p>
+            <h3>Delivery handoff</h3>
+            <p>Gives teams export and integration paths through Excel, JSON, QMetry CSV, Gherkin feature files, workspace backups, QMetry jobs, and Jira configuration.</p>
           </article>
         </div>
       </section>
@@ -92,32 +92,32 @@
       <section class="section alt" id="features">
         <div class="section-intro">
           <p class="eyebrow">Feature depth</p>
-          <h2>From requirements to structured QA assets.</h2>
+          <h2>From requirement intake to durable coverage assets.</h2>
         </div>
         <div class="feature-list">
           <article class="panel">
-            <h3>Document intake</h3>
-            <p>Supports upload of BRDs and requirement files such as DOCX, PDF, TXT, plus YAML API specifications for endpoint-oriented test generation.</p>
+            <h3>Guided workspace onboarding</h3>
+            <p>Users select or create a workspace, configure an LLM provider, optionally prepare integrations, and resume their most recent project/workspace context.</p>
           </article>
           <article class="panel">
-            <h3>Requirement parsing</h3>
-            <p>Extracts high-level requirement structure such as title, description, actors, flows, alternative paths, preconditions, postconditions, and API endpoint details.</p>
+            <h3>Safe document extraction</h3>
+            <p>Upload handling validates extensions and MIME types, limits file size and parser work, deletes temporary originals after extraction, and stores normalized requirement JSON.</p>
           </article>
           <article class="panel">
-            <h3>LLM generation</h3>
-            <p>Uses prompt-driven generation to produce detailed test cases with description, steps, expected results, type, and API-specific context.</p>
+            <h3>Reviewable generation</h3>
+            <p>Generated cases include IDs, titles, descriptions, preconditions, steps, expected results, type, and coverage category, with edit and save flows before handoff.</p>
           </article>
           <article class="panel">
-            <h3>Review and filtering</h3>
-            <p>Generated cases can be viewed, expanded/collapsed, searched by keyword, filtered, restored from history, and compared against previous versions.</p>
+            <h3>Saved library and history</h3>
+            <p>Saved cases can be searched and filtered by source, while history versions can be listed, compared, restored, or deleted based on role and workspace scope.</p>
           </article>
           <article class="panel">
-            <h3>Exports</h3>
-            <p>Exports generated test cases to JSON, Excel, QMetry CSV, and Gherkin JSON so output can move into test management or automation workflows.</p>
+            <h3>Integration controls</h3>
+            <p>QMetry and Jira settings are project-scoped, role-aware, encrypted, and guarded by outbound URL safety checks before background delivery jobs run.</p>
           </article>
           <article class="panel">
-            <h3>QMetry path</h3>
-            <p>Supports QMetry-oriented CSV output so generated cases can move from review into a test-management workflow.</p>
+            <h3>Operational hardening</h3>
+            <p>Development seeding is explicit, production requires strong auth and encryption keys, migrations protect legacy data, and local backup/restore scripts support recovery.</p>
           </article>
         </div>
       </section>
@@ -125,22 +125,36 @@
       <section class="section">
         <div class="section-intro">
           <p class="eyebrow">Product view</p>
-          <h2>Sanitized demo screens.</h2>
-          <p>These screens use synthetic requirements and generated examples so the portfolio can show the workflow without publishing private BRDs, users, or history data.</p>
+          <h2>Demo screens from the refactored application.</h2>
+          <p>These screens were captured from the local seeded demo workspace and show synthetic flight-booking requirements, generated coverage, and export paths.</p>
         </div>
         <div class="project-grid">
           <article class="project-card">
-            <img src="assets/llm-tcg-dashboard.svg" alt="LLM TCG dashboard screenshot">
+            <img src="assets/testweave-dashboard.png" alt="TestWeave dashboard screenshot">
             <div class="body">
-              <h3>Generation dashboard</h3>
-              <p>Upload, parsed preview, generated case summary, and export actions shown as one end-to-end product flow.</p>
+              <h3>Workspace dashboard</h3>
+              <p>Project and workspace context, provider status, coverage mix, recent saved cases, source document counts, and role-aware navigation.</p>
             </div>
           </article>
           <article class="project-card">
-            <img src="assets/llm-tcg-visual.svg" alt="LLM TCG generation pipeline visual">
+            <img src="assets/testweave-requirements.png" alt="TestWeave requirements extraction screen">
             <div class="body">
-              <h3>Generation pipeline</h3>
-              <p>A simplified view of how requirements move through parsing, LLM generation, review, versioning, and exports.</p>
+              <h3>Requirement review</h3>
+              <p>Document upload, extracted title and description, actors, flows, alternative paths, negative paths, postconditions, and business benefits.</p>
+            </div>
+          </article>
+          <article class="project-card">
+            <img src="assets/testweave-library.png" alt="TestWeave saved test case library">
+            <div class="body">
+              <h3>Saved library</h3>
+              <p>SQLite-backed saved test cases with search, source filtering, coverage categories, ownership metadata, review actions, and delete controls.</p>
+            </div>
+          </article>
+          <article class="project-card">
+            <img src="assets/testweave-export-center.png" alt="TestWeave export center">
+            <div class="body">
+              <h3>Export center</h3>
+              <p>Workspace backup, optional QMetry delivery, and handoff formats for JSON, Excel, QMetry CSV, and Gherkin feature scenarios.</p>
             </div>
           </article>
         </div>
@@ -150,24 +164,24 @@
         <div class="two-column">
           <div>
             <p class="eyebrow">Architecture</p>
-            <h2>Streamlit workflow with parser, generator, exporter, and history modules.</h2>
-            <p class="lead">The tool is structured around a clear pipeline: ingest a file, parse requirements, generate cases, store versions, then export or integrate with downstream QA platforms.</p>
+            <h2>Next.js interface, FastAPI services, scoped storage, and worker-based integrations.</h2>
+            <p class="lead">The refactor separates UI, API, domain services, provider adapters, exporters, integrations, and persistence so the test-generation workflow can grow beyond a local prototype.</p>
           </div>
           <div class="panel architecture">
             <div class="flow-row">
-              <div class="flow-box"><strong>Input files</strong><br>BRD, PDF, TXT, YAML API specs.</div>
+              <div class="flow-box"><strong>Next.js frontend</strong><br>Workspace shell, review UI, dashboard, library, exports.</div>
               <div class="flow-arrow">-&gt;</div>
-              <div class="flow-box"><strong>Parser layer</strong><br>Turns documents into structured requirements.</div>
+              <div class="flow-box"><strong>FastAPI backend</strong><br>Authentication, scoped routes, upload, generation, export.</div>
             </div>
             <div class="flow-row">
-              <div class="flow-box"><strong>Generator</strong><br>LLM prompts plus rule-based cases.</div>
+              <div class="flow-box"><strong>Core services</strong><br>Parsers, generators, history, dashboard, integrations.</div>
               <div class="flow-arrow">-&gt;</div>
-              <div class="flow-box"><strong>Review UI</strong><br>Cards, filters, history, restore flow.</div>
+              <div class="flow-box"><strong>Storage</strong><br>SQLAlchemy models, Alembic migrations, SQLite/Postgres.</div>
             </div>
             <div class="flow-row">
-              <div class="flow-box"><strong>SQLite history</strong><br>Versioned generated cases per file.</div>
+              <div class="flow-box"><strong>LLM providers</strong><br>Ollama, Groq, deterministic fallback.</div>
               <div class="flow-arrow">-&gt;</div>
-              <div class="flow-box"><strong>Exports</strong><br>JSON, Excel, QMetry CSV, Gherkin JSON.</div>
+              <div class="flow-box"><strong>Delivery</strong><br>JSON, XLSX, QMetry CSV, Gherkin, QMetry jobs.</div>
             </div>
           </div>
         </div>
@@ -178,33 +192,37 @@
           <div class="panel">
             <h2>Setup and use</h2>
             <ol>
-              <li>Create a Python environment and install project requirements.</li>
-              <li>Run the Streamlit application locally.</li>
-              <li>Log in using configured user access.</li>
-              <li>Upload a BRD, PDF, TXT, or YAML API specification.</li>
-              <li>Review parsed requirements, generate test cases, and inspect the output.</li>
-              <li>Export to JSON, Excel, QMetry CSV, or Gherkin JSON.</li>
+              <li>Install Python backend dependencies and Next.js frontend packages.</li>
+              <li>Start the development stack with the project script and explicitly seed demo users.</li>
+              <li>Log in, choose the active project and workspace, and confirm provider settings.</li>
+              <li>Upload a supported requirement document or API specification.</li>
+              <li>Review the extracted requirement summary, generate cases, edit results, and save coverage.</li>
+              <li>Export artifacts, download a workspace backup, or queue QMetry delivery when configured.</li>
             </ol>
           </div>
           <div class="panel">
             <h2>Tech stack</h2>
             <div class="meta">
               <span>Python</span>
-              <span>Streamlit</span>
-              <span>SQLite</span>
-              <span>LLM prompts</span>
-              <span>Document parsers</span>
-              <span>Excel export</span>
-              <span>QMetry CSV</span>
+              <span>FastAPI</span>
+              <span>Next.js</span>
+              <span>React</span>
+              <span>SQLAlchemy</span>
+              <span>Alembic</span>
+              <span>SQLite/Postgres</span>
+              <span>Ollama</span>
+              <span>Groq</span>
+              <span>QMetry</span>
+              <span>Jira</span>
             </div>
-            <p class="safety-note">Public portfolio note: this page avoids publishing user data, login config, local history databases, prompts with secrets, or customer requirements.</p>
+            <p class="safety-note">This page avoids exposing source code, secrets, production credentials, uploaded customer files, integration tokens, local databases, or private requirements.</p>
           </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <span>LLM Test Case Generator case study</span>
+      <span>TestWeave case study</span>
       <span><a href="index.html">Back to portfolio</a></span>
     </footer>
     <script src="app.js"></script>
