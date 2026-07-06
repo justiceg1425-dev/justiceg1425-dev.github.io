@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>#screens .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }</style>
   </head>
   <body>
     <header class="site-header">
@@ -49,7 +50,7 @@
             <span>MockFlow v0.1.0-beta has passed fresh Windows installer testing, HTTP/HTTPS capture, simulation, large payload, licensing, and release QA. Installer access is kept private and available on request.</span>
           </article>
         </div>
-        <img src="assets/mockflow-simulation.png" alt="MockFlow simulation workbench">
+        <img src="assets/mockflow-overview.png" alt="MockFlow overview dashboard showing the capture-to-simulate pipeline">
       </section>
 
       <section class="section alt" id="problem">
@@ -89,7 +90,7 @@
           </article>
           <article class="panel">
             <h3>UX judgment</h3>
-            <p>Built for QA users who may not be proxy experts: setup guide, environment doctor, Postman-focused instructions, activity diagnostics, and clear armed-template behavior.</p>
+            <p>Built for QA users who may not be proxy experts: a guided setup checklist, an environment readiness check, Postman-focused instructions, activity diagnostics, and clear armed-template behavior.</p>
           </article>
           <article class="panel">
             <h3>Release readiness</h3>
@@ -185,29 +186,36 @@
       <section class="section" id="screens">
         <div class="section-intro">
           <p class="eyebrow">Product workflow</p>
-          <h2>From setup to simulated responses.</h2>
-          <p>MockFlow uses a local agent and a browser dashboard. The public portfolio shows the workflow while captured traffic, certificates, tokens, and source code stay private.</p>
+          <h2>Four views, one capture-to-simulate pipeline.</h2>
+          <p>MockFlow's dashboard was redesigned around the actual tester workflow instead of a flat feature list: Overview, Capture, Library, and Simulate. The public portfolio shows the workflow while captured traffic, certificates, tokens, and source code stay private.</p>
         </div>
         <div class="project-grid">
           <article class="project-card">
-            <img src="assets/mockflow-setup-guide.png" alt="MockFlow setup guide and environment readiness screen">
+            <img src="assets/mockflow-overview.png" alt="MockFlow overview screen with pipeline stage cards, setup checklist, and latest traffic">
             <div class="body">
-              <h3>Setup guide</h3>
-              <p>Guides testers through starting the local agent, checking the environment, and preparing Postman before capturing traffic.</p>
+              <h3>Overview</h3>
+              <p>A live pipeline view of capture, promote, queue, and simulate counts, a setup checklist backed by an environment readiness check, and a feed of the most recent traffic.</p>
             </div>
           </article>
           <article class="project-card">
-            <img src="assets/mockflow-captured-messages.png" alt="MockFlow captured messages workbench">
+            <img src="assets/mockflow-capture.png" alt="MockFlow capture screen with traffic table and request/response inspector">
             <div class="body">
-              <h3>Learning workbench</h3>
-              <p>Shows captured API calls, request/response inspectors, and the promote-to-template path used during learning mode.</p>
+              <h3>Capture</h3>
+              <p>Captured API calls in a sortable traffic table, a tabbed Response/Request/Headers inspector, and the promote-to-template path used during learning mode.</p>
             </div>
           </article>
           <article class="project-card">
-            <img src="assets/mockflow-simulation.png" alt="MockFlow simulation queue and template bank">
+            <img src="assets/mockflow-library.png" alt="MockFlow library screen with templates, imports, AI review, and conflicts tabs">
             <div class="body">
-              <h3>Simulation queue</h3>
-              <p>Lets users arm only the templates they want active for a focused Postman or Newman test run.</p>
+              <h3>Library</h3>
+              <p>Templates, OpenAPI/Postman imports, AI-assisted scenario review, and matching-rule conflict resolution consolidated into one tabbed workspace.</p>
+            </div>
+          </article>
+          <article class="project-card">
+            <img src="assets/mockflow-simulate.png" alt="MockFlow simulate screen with the active queue and simulation activity">
+            <div class="body">
+              <h3>Simulate</h3>
+              <p>Arms only the templates a tester wants active for a focused Postman or Newman run, with dry-run diagnostics and a live activity feed showing matched, passthrough, and no-match events.</p>
             </div>
           </article>
         </div>
