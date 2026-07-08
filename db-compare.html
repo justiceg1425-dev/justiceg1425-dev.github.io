@@ -3,13 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DB Compare Pro Case Study - Justice Gnanamuttu</title>
-    <meta name="description" content="DB Compare Pro case study: FastAPI and Next.js database reconciliation tool for Oracle, MySQL, and PostgreSQL with batch processing, AI-assisted mismatch analysis, and paginated DuckDB result storage.">
+    <title>Parity Case Study - Justice Gnanamuttu</title>
+    <meta name="description" content="Parity case study: FastAPI and Next.js database reconciliation tool for Oracle, MySQL, and PostgreSQL with batch processing, AI-assisted mismatch analysis, and paginated DuckDB result storage.">
     <link rel="icon" href="assets/mockflow-mark.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>#screens .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }</style>
   </head>
   <body>
     <header class="site-header">
@@ -30,7 +31,7 @@
         <div>
           <a class="breadcrumb" href="index.html">Back to portfolio</a>
           <p class="eyebrow">Database reconciliation</p>
-          <h1>DB Compare Pro</h1>
+          <h1>Parity</h1>
           <p class="lead">A FastAPI and Next.js database reconciliation tool for validating source and target tables across Oracle, MySQL, and PostgreSQL — with column mapping, batch processing, paginated DuckDB result storage, and AI-assisted mismatch analysis.</p>
           <div class="button-row">
             <a class="button primary" href="#features">Explore features</a>
@@ -43,7 +44,7 @@
             <article class="stat"><strong>AI</strong><span>Groq and Ollama analysis</span></article>
           </div>
         </div>
-        <img src="assets/db-compare-dashboard.svg" alt="DB Compare Pro operations console with sanitized demo data">
+        <img src="assets/parity-results.png" alt="Parity run and results screen with mismatch breakdown and AI summary">
       </section>
 
       <section class="section alt">
@@ -70,7 +71,7 @@
         <div class="section-intro">
           <p class="eyebrow">Case-study snapshot</p>
           <h2>Why this matters for data QA work.</h2>
-          <p>DB Compare Pro grew from a real testing problem: proving that two systems agree when their schemas, keys, filters, and business rules do not line up neatly. The refactored version adds a purpose-built FastAPI backend and Next.js operations console around the comparison engine, replacing the original Streamlit prototype with a maintainable, extensible architecture.</p>
+          <p>Parity grew from a real testing problem: proving that two systems agree when their schemas, keys, filters, and business rules do not line up neatly. The refactored version adds a purpose-built FastAPI backend and Next.js operations console around the comparison engine, replacing the original Streamlit prototype with a maintainable, extensible architecture.</p>
         </div>
         <div class="feature-list">
           <article class="panel">
@@ -133,25 +134,39 @@
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" id="screens">
         <div class="section-intro">
           <p class="eyebrow">Product view</p>
-          <h2>Sanitized demo screens.</h2>
-          <p>These visuals show the workflow and interface shape without exposing database names, credentials, or real records.</p>
+          <h2>Four steps, one reconciliation console.</h2>
+          <p>Screens from the redesigned Next.js console, populated with sanitized demo data — no real connection strings, schemas, or records.</p>
         </div>
         <div class="project-grid">
           <article class="project-card">
-            <img src="assets/db-compare-dashboard.svg" alt="DB Compare Pro operations console">
+            <img src="assets/parity-connect.png" alt="Parity connect screen with Oracle source and MySQL target credential forms">
             <div class="body">
-              <h3>Operations console</h3>
-              <p>Next.js step-by-step wizard covering connection, table selection, column mapping, rules, batch options, run monitoring, and the paginated result explorer.</p>
+              <h3>Connect</h3>
+              <p>Source and target credentials stay on the backend — only a connection handle is kept in the browser. Saved profiles skip re-entry for frequently used systems.</p>
             </div>
           </article>
           <article class="project-card">
-            <img src="assets/db-compare-visual.svg" alt="DB Compare reconciliation architecture visual">
+            <img src="assets/parity-scope.png" alt="Parity scope screen with table pickers, row counts, and column mapping chips">
             <div class="body">
-              <h3>Reconciliation engine</h3>
-              <p>A visual explanation of how source rows, target rows, batch strategies, DuckDB result storage, and AI summary generation fit together in the FastAPI backend.</p>
+              <h3>Scope</h3>
+              <p>Pick source and target tables, see row counts and health checks at a glance, and map key and compare columns with recommended-key suggestions.</p>
+            </div>
+          </article>
+          <article class="project-card">
+            <img src="assets/parity-tune.png" alt="Parity tune screen with natural-language filter and generated SQL WHERE fragment">
+            <div class="body">
+              <h3>Tune</h3>
+              <p>Optional filters, rules, and performance settings — including natural-language-to-SQL filter generation — with sensible defaults for everything else.</p>
+            </div>
+          </article>
+          <article class="project-card">
+            <img src="assets/parity-results.png" alt="Parity run and results screen with mismatch counts, column breakdown, and AI summary">
+            <div class="body">
+              <h3>Run &amp; results</h3>
+              <p>Paginated mismatch, missing-source, and missing-target tabs, a per-column mismatch breakdown, field-level diffs, and an AI-generated summary of discrepancy patterns.</p>
             </div>
           </article>
         </div>
@@ -221,7 +236,7 @@
     </main>
 
     <footer class="site-footer">
-      <span>DB Compare Pro case study</span>
+      <span>Parity case study</span>
       <span><a href="index.html">Back to portfolio</a></span>
     </footer>
     <script src="app.js"></script>
