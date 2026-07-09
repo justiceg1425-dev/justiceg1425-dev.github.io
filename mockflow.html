@@ -38,6 +38,8 @@
             <a class="button" href="#setup">Setup and usage</a>
             <a class="button" href="#release">Beta status</a>
             <a class="button" href="#postman">Postman setup</a>
+            <a class="button" href="#agents">Agent integration</a>
+            <a class="button" href="#walkthrough">See it end-to-end</a>
           </div>
           <div class="stat-grid">
             <article class="stat"><strong>Local</strong><span>desktop agent first</span></article>
@@ -303,6 +305,131 @@
         </div>
       </section>
 
+      <section class="section" id="agents">
+        <div class="section-intro">
+          <p class="eyebrow">Agent integration</p>
+          <h2>An AI assistant can now test with MockFlow on its own &mdash; safely.</h2>
+          <p>Most QA tools only work when a person is sitting there clicking through them. I built a connector so an AI coding assistant (like Claude) can drive MockFlow itself: look around, pick a test scenario, turn it on, and read back what happened. Think of it like handing a trusted assistant a <strong>remote control</strong> instead of a screwdriver &mdash; it can only press the buttons that are on the remote, and every button press gets written down automatically.</p>
+        </div>
+        <div class="two-column">
+          <article class="panel">
+            <h3>Why this is safe, not just clever</h3>
+            <ul>
+              <li>The assistant can only do what MockFlow already does &mdash; no hidden shortcuts or special powers. <span class="jargon-note">(thin adapter)</span></li>
+              <li>Every action has a plain, human-readable name, so it's always obvious what's being asked for. <span class="jargon-note">(namespaced tools)</span></li>
+              <li>Just looking around is always safe. Anything that actually changes behavior is clearly flagged before it happens. <span class="jargon-note">(read-cheap / write-explicit)</span></li>
+              <li>If something goes wrong, the assistant gets a plain-language explanation instead of a confusing crash. <span class="jargon-note">(normalized errors)</span></li>
+              <li>Every single action is logged automatically &mdash; nothing the assistant does is invisible to the person who owns the environment. <span class="jargon-note">(audit trail)</span></li>
+            </ul>
+          </article>
+          <div class="panel architecture">
+            <div class="demo-hint-bar"><span class="hint-dot"></span>Watch an AI assistant test a flight-booking failure, step by step</div>
+            <button class="tab-btn active cta-pulse" id="agent-demo-btn" onclick="runAgentDemo()">▶ Watch it work</button>
+            <div class="capture-list" id="agent-demo-log" style="margin-top:14px"></div>
+          </div>
+        </div>
+        <div class="section-intro" style="margin-top:32px">
+          <p class="eyebrow">What it can actually do</p>
+          <h2 style="font-size:1.4rem">Six things the assistant is allowed to do &mdash; nothing more.</h2>
+        </div>
+        <div class="feature-list">
+          <article class="panel">
+            <h3>Check what's going on</h3>
+            <p>Is MockFlow running? What mode is it in? How many test scenarios exist? This is always the first thing the assistant checks.</p>
+            <p class="jargon-note">mockflow_status</p>
+          </article>
+          <article class="panel">
+            <h3>See what test scenarios exist</h3>
+            <p>Lists the saved test scenarios and lets the assistant read one in full detail before using it.</p>
+            <p class="jargon-note">mockflow_list_scenarios · mockflow_get_scenario</p>
+          </article>
+          <article class="panel">
+            <h3>Turn on a specific test scenario</h3>
+            <p class="tool-badge" style="display:inline-block;margin:0 0 6px">changes behavior &mdash; always announced</p>
+            <p>Switches on a saved scenario, like "booking confirmation times out," so it's ready to be tested against.</p>
+            <p class="jargon-note">mockflow_arm_scenario</p>
+          </article>
+          <article class="panel">
+            <h3>Switch between recording and replaying</h3>
+            <p class="tool-badge" style="display:inline-block;margin:0 0 6px">changes behavior &mdash; always announced</p>
+            <p>Flips MockFlow between capturing real traffic and replaying the scenario that was just turned on.</p>
+            <p class="jargon-note">mockflow_set_mode</p>
+          </article>
+          <article class="panel">
+            <h3>Look at what actually happened</h3>
+            <p>Reads back the real requests and responses that were sent, so the assistant can confirm the test behaved as expected.</p>
+            <p class="jargon-note">mockflow_get_traffic</p>
+          </article>
+          <article class="panel">
+            <h3>Show its own work</h3>
+            <p>Prints a full, timestamped list of every action it took &mdash; so a human can review exactly what the assistant did, after the fact.</p>
+            <p class="jargon-note">mockflow_get_audit_summary</p>
+          </article>
+        </div>
+        <p class="safety-note" style="margin-top:20px">The demo above walks through a real airline scenario: an assistant testing how a booking app handles a reservation system that fails to confirm a seat in time. Technical name for this kind of connector: <strong>MCP</strong> (Model Context Protocol) &mdash; a shared rulebook that lets AI assistants and software tools talk to each other safely. Adapter source, like MockFlow's, is available on request for controlled review.</p>
+      </section>
+
+      <section class="section alt" id="walkthrough">
+        <div class="section-intro">
+          <p class="eyebrow">See it end-to-end</p>
+          <h2>What a real session actually looks like</h2>
+          <p>"MCP" sounds abstract until you watch it happen. Here's one real conversation, broken into the exact moves the assistant makes &mdash; no jargon required to follow along.</p>
+        </div>
+
+        <div class="panel" style="background:var(--inner);border-color:var(--brand-border);max-width:640px;margin:0 auto 22px">
+          <p style="font-family:'IBM Plex Mono', monospace;font-size:14px;color:var(--ink);margin:0">
+            🗣️ &ldquo;Claude, test how our booking app handles a reservation timeout.&rdquo;
+          </p>
+        </div>
+
+        <div class="capture-list" style="max-width:760px;margin:0 auto">
+          <div class="capture-item" style="align-items:flex-start;flex-direction:column;gap:6px">
+            <div style="display:flex;align-items:center;gap:12px;width:100%">
+              <span style="color:var(--brand);font-family:'IBM Plex Mono',monospace;font-weight:700">1</span>
+              <span style="color:var(--ink)">Checks what MockFlow already knows: is it running, what mode is it in, what test scenarios exist.</span>
+              <span class="mono-tag" style="margin-left:auto;white-space:nowrap">🔌 MCP tool</span>
+            </div>
+          </div>
+          <div class="capture-item" style="align-items:flex-start;flex-direction:column;gap:6px">
+            <div style="display:flex;align-items:center;gap:12px;width:100%">
+              <span style="color:var(--brand);font-family:'IBM Plex Mono',monospace;font-weight:700">2</span>
+              <span style="color:var(--ink)">Turns on the &ldquo;reservation times out&rdquo; test and switches MockFlow into replay mode &mdash; both announced out loud as changes before they happen.</span>
+              <span class="mono-tag" style="margin-left:auto;white-space:nowrap">🔌 MCP tool</span>
+            </div>
+          </div>
+          <div class="capture-item" style="align-items:flex-start;flex-direction:column;gap:6px;border-color:var(--brand-border)">
+            <div style="display:flex;align-items:center;gap:12px;width:100%">
+              <span style="color:var(--brand);font-family:'IBM Plex Mono',monospace;font-weight:700">3</span>
+              <span style="color:var(--ink)">Runs the actual booking app (or a Postman collection) &mdash; the same real test a person would run, sending real requests through MockFlow.</span>
+              <span class="mono-tag" style="margin-left:auto;white-space:nowrap;color:var(--brand);border-color:var(--brand-border)">💻 its own terminal</span>
+            </div>
+          </div>
+          <div class="capture-item" style="align-items:flex-start;flex-direction:column;gap:6px">
+            <div style="display:flex;align-items:center;gap:12px;width:100%">
+              <span style="color:var(--brand);font-family:'IBM Plex Mono',monospace;font-weight:700">4</span>
+              <span style="color:var(--ink)">Reads back exactly what was sent and received, and reports what it found.</span>
+              <span class="mono-tag" style="margin-left:auto;white-space:nowrap">🔌 MCP tool</span>
+            </div>
+          </div>
+        </div>
+
+        <article class="panel status-panel" style="max-width:760px;margin:22px auto 0">
+          <h3>The key idea</h3>
+          <p>MCP only covers the three 🔌 steps &mdash; it's the remote control, nothing more. Step 3, the 💻 one, is the assistant just using its own terminal, the same tool a person uses to run Postman or a test script. <strong>MCP doesn't replace testing tools or generate traffic</strong> &mdash; it just lets an assistant reach the same controls a human tester already had, safely and out loud.</p>
+        </article>
+
+        <p class="lead" style="max-width:760px;margin:22px auto 0;text-align:center;color:var(--muted)">Recording new traffic instead of replaying it works the same way, just in reverse: switch MockFlow to <em>learning</em> mode, run the same real requests through the proxy, then ask the assistant to look at what got captured and turn it into a reusable template.</p>
+
+        <div class="panel" style="max-width:640px;margin:28px auto 0">
+          <h2 style="font-size:1.2rem;margin-bottom:14px">Try it yourself</h2>
+          <ol>
+            <li>Start MockFlow: <code>mockflow\scripts\start-mockflow.ps1</code></li>
+            <li>Register the connector once: <code>claude mcp add --env MOCKFLOW_BASE_URL=http://localhost:8787 --transport stdio mockflow -- python mockflow_mcp_server.py</code></li>
+            <li>In any Claude Code session, just ask in plain language &mdash; <em>&ldquo;what mock scenarios exist in MockFlow?&rdquo;</em>, <em>&ldquo;arm the booking-confirmation-timeout scenario and test demo/app.py against it&rdquo;</em>, <em>&ldquo;show me the last 5 captured requests.&rdquo;</em> The assistant picks the right tools on its own.</li>
+          </ol>
+        </div>
+      </section>
+
       <section class="section" id="recruiter-notes">
         <div class="section-intro">
           <p class="eyebrow">Recruiter notes</p>
@@ -335,5 +462,48 @@
       <span><a href="index.html">Back to portfolio</a></span>
     </footer>
     <script src="app.js"></script>
+    <script>
+      /* ── Agent integration: animated tool-call walkthrough ── */
+      const agentDemoSteps = [
+        { icon: '▸', text: 'Checks whether MockFlow is running, and what it’s currently doing.', tech: 'mockflow_status()' },
+        { icon: '▸', text: 'Looks up the test scenarios that are available.', tech: 'mockflow_list_scenarios()' },
+        { icon: '▸', text: 'Reads the details of the "reservation times out" scenario before using it.', tech: 'mockflow_get_scenario("booking-confirmation-timeout")' },
+        { icon: '✓', text: 'Turns that scenario on. (Flagged as a change — always announced out loud.)', tech: 'mockflow_arm_scenario("booking-confirmation-timeout")', ok: true },
+        { icon: '✓', text: 'Switches MockFlow into replay mode. (Also flagged as a change.)', tech: 'mockflow_set_mode("simulation")', ok: true },
+        { icon: '▸', text: 'Runs the sample booking app against it — flight EK203, 2 passengers.', tech: 'python demo/app.py EK203 2 → timed out after 3.4s, as designed' },
+        { icon: '▸', text: 'Reads back exactly what the app sent and received.', tech: 'mockflow_get_traffic(limit=1) → 504 "did not confirm the PNR in time"' },
+        { icon: '▸', text: 'Prints a full log of everything it just did, for a human to review.', tech: 'mockflow_get_audit_summary() → 7 actions logged' },
+      ];
+      let agentDemoRunning = false;
+      function runAgentDemo() {
+        if (agentDemoRunning) return;
+        agentDemoRunning = true;
+        const btn = document.getElementById('agent-demo-btn');
+        const log = document.getElementById('agent-demo-log');
+        btn.classList.remove('cta-pulse');
+        btn.textContent = 'Running…';
+        log.innerHTML = '';
+        let i = 0;
+        const interval = setInterval(() => {
+          if (i >= agentDemoSteps.length) {
+            clearInterval(interval);
+            btn.textContent = '↻ Watch it again';
+            agentDemoRunning = false;
+            return;
+          }
+          const s = agentDemoSteps[i++];
+          const row = document.createElement('div');
+          row.className = 'capture-item';
+          row.style.cssText = 'align-items:flex-start;flex-direction:column;gap:4px';
+          row.innerHTML =
+            `<div style="display:flex;align-items:center;gap:10px;width:100%">` +
+              `<span style="color:${s.ok ? 'var(--brand)' : 'var(--muted)'}">${s.icon}</span>` +
+              `<span style="color:var(--ink)">${s.text}</span>` +
+            `</div>` +
+            `<div style="padding-left:24px;color:var(--dimmer);font-family:'IBM Plex Mono',monospace;font-size:11px">${s.tech}</div>`;
+          log.appendChild(row);
+        }, 650);
+      }
+    </script>
   </body>
 </html>
