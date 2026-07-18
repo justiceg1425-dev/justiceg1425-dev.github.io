@@ -82,7 +82,7 @@
     <div class="content-w pad-section" id="tools">
       <p class="section-label">// tools I built</p>
       <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);letter-spacing:-.02em;margin-bottom:8px">QA Engineering Platform Suite</h2>
-      <p style="color:var(--muted);max-width:620px;font-size:15px;margin-bottom:36px">Three production-grade tools addressing real problems in API testing, test case generation, and database reconciliation. All AI-enabled with Ollama local fallback.</p>
+      <p style="color:var(--muted);max-width:620px;font-size:15px;margin-bottom:36px">Four production-grade tools addressing real problems in API testing, test case generation, database reconciliation, and safe test-data provisioning. All AI-enabled with Ollama local fallback.</p>
 
       <!-- MockFlow -->
       <div class="tool-card" id="tool-mockflow">
@@ -246,6 +246,47 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Graft -->
+      <div class="tool-card" id="tool-graft">
+        <div class="tool-card-grid rev">
+          <div class="tool-demo">
+            <div class="db-table-label">GRAPH EXPLORER · FIXTURE SCHEMA</div>
+            <div class="db-table" style="margin-bottom:14px">
+              <div class="db-row"><span>FLIGHTS → BOOKINGS</span><span style="color:var(--muted)">tier 100 · declared FK</span></div>
+              <div class="db-row"><span>BOOKINGS → PASSENGERS</span><span style="color:var(--muted)">tier 100 · declared FK</span></div>
+              <div class="db-row"><span>PAYMENTS → BOOKINGS</span><span id="graft-edge-status" style="color:#febc2e">tier 95 · suggested</span></div>
+            </div>
+            <div class="demo-hint-bar"><span class="hint-dot"></span>Interactive demo · review a suggested edge</div>
+            <button class="run-btn cta-pulse-strong" id="graft-btn" onclick="toggleGraft()">Approve edge</button>
+            <div id="graft-result" style="display:none">
+              <div class="db-ai-summary">
+                <span class="ai-label">EVIDENCE · PL/SQL STATIC ANALYSIS</span>
+                PAYMENTS.BOOKING_ID matches BOOKINGS.BOOKING_ID in 4 stored procedures. Edge approved — now traversable during extraction.
+              </div>
+            </div>
+          </div>
+          <div class="tool-info no-br">
+            <div class="tool-header">
+              <div class="tool-mark">GR</div>
+              <div>
+                <div class="tool-name">Graft</div>
+                <div class="tool-badge">FastAPI + Next.js · Oracle metadata</div>
+              </div>
+            </div>
+            <p class="tool-desc">Oracle relationship-discovery and safe test-data-provisioning tool. Maps real database relationships from live metadata, then generates a reviewable SQL script — or runs a guarded live copy — for one complete business entity.</p>
+            <div class="tag-row">
+              <span class="mono-tag">FastAPI</span>
+              <span class="mono-tag">Next.js 15</span>
+              <span class="mono-tag">Oracle</span>
+              <span class="mono-tag">NetworkX</span>
+              <span class="mono-tag">FastMCP</span>
+              <span class="mono-tag">SQLAlchemy</span>
+            </div>
+            <a class="detail-link" href="graft.html">View full case study →</a>
           </div>
         </div>
       </div>
@@ -444,6 +485,7 @@
       { icon: '▸', label: 'mockflow     ', arrow: '→', val: 'beta-ready', note: 'API proxy · Windows installer' },
       { icon: '▸', label: 'testweave    ', arrow: '→', val: 'active    ', note: 'LLM test gen · FastAPI + Next.js' },
       { icon: '▸', label: 'parity       ', arrow: '→', val: 'active    ', note: 'ETL recon · Oracle / MySQL / PG' },
+      { icon: '▸', label: 'graft        ', arrow: '→', val: 'active    ', note: 'Oracle relationship discovery' },
       { icon: '▸', label: 'experience   ', arrow: '→', val: '14+ yrs   ', note: 'aviation · banking · fintech' },
       { icon: '▸', label: 'location     ', arrow: '→', val: 'Toronto, CA', note: 'remote-first · open globally' },
     ];
@@ -498,6 +540,27 @@
       } else {
         btn.textContent = 'Generate cases';
         out.innerHTML = '<div class="tc-placeholder">Generated test cases will appear here</div>';
+      }
+    }
+
+    /* ── Graft edge approval toggle ── */
+    let graftApproved = false;
+    function toggleGraft() {
+      graftApproved = !graftApproved;
+      const status = document.getElementById('graft-edge-status');
+      const result = document.getElementById('graft-result');
+      const btn = document.getElementById('graft-btn');
+      btn.classList.remove('cta-pulse-strong');
+      if (graftApproved) {
+        status.textContent = 'tier 95 · approved';
+        status.style.color = 'var(--brand)';
+        btn.textContent = 'Reset';
+        result.style.display = '';
+      } else {
+        status.textContent = 'tier 95 · suggested';
+        status.style.color = '#febc2e';
+        btn.textContent = 'Approve edge';
+        result.style.display = 'none';
       }
     }
 

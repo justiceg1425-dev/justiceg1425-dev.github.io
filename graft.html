@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Graft Case Study - Justice Gnanamuttu</title>
+    <meta name="description" content="Graft case study: an Oracle relationship-discovery and safe test-data-provisioning tool that maps live database relationships and generates reviewable extraction scripts for a single business entity.">
+    <link rel="icon" href="assets/mockflow-mark.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>#screens .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }</style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Portfolio home">
+        <span class="brand-mark">JG</span>
+        <span>Justice Gnanamuttu</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html#projects">Projects</a>
+        <a href="mockflow.html">MockFlow</a>
+        <a href="llm-tcg.html">TestWeave</a>
+        <a href="db-compare.html">Parity</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="detail-hero">
+        <div>
+          <a class="breadcrumb" href="index.html">Back to portfolio</a>
+          <p class="eyebrow">Oracle relationship discovery &amp; safe test data</p>
+          <h1>Graft</h1>
+          <p class="lead">An Oracle relationship-discovery and safe test-data-provisioning tool. Graft maps real database relationships from live metadata, then generates a reviewable SQL script — or runs a guarded live copy — that pulls one complete business entity out of production and into a non-production environment, instead of testers manually and blindly copying data between environments.</p>
+          <div class="button-row">
+            <a class="button primary" href="#features">Explore features</a>
+            <a class="button" href="#setup">Setup and architecture</a>
+          </div>
+          <div class="stat-grid">
+            <article class="stat"><strong>Oracle</strong><span>data dictionary discovery</span></article>
+            <article class="stat"><strong>Row-level</strong><span>closure across the graph</span></article>
+            <article class="stat"><strong>Bounded</strong><span>budgets halt, never truncate</span></article>
+            <article class="stat"><strong>Guarded</strong><span>code-level prod-write block</span></article>
+          </div>
+        </div>
+        <img src="assets/graft-graph.png" alt="Graft graph explorer showing the fixture schema's tables and tiered relationship edges awaiting review">
+      </section>
+
+      <section class="section alt">
+        <div class="two-column">
+          <div class="section-intro">
+            <p class="eyebrow">Problem</p>
+            <h2>Recreating one business entity for testing shouldn't require tribal knowledge of the schema.</h2>
+            <p>Enterprise Oracle databases often have thousands of interconnected tables. Production has complete, realistic data; staging, QA, and UAT environments drift stale over time. Manually figuring out which rows need to travel together to recreate one flight, order, or customer for testing is currently manual, error-prone, slow, and dependent on whoever happens to know the schema best.</p>
+          </div>
+          <article class="panel">
+            <h3>What the tool solves</h3>
+            <ul>
+              <li>Scans Oracle's data dictionary to discover declared foreign keys automatically, plus heuristic relationships surfaced for human review.</li>
+              <li>Builds a dependency graph from approved relationships and computes the full row-level closure for a chosen seed entity.</li>
+              <li>Enforces hard row/table/depth budgets that halt and report rather than silently truncating a result set a tester might trust as complete.</li>
+              <li>Generates a reviewable, downloadable SQL script, or executes a guarded live copy into a connection explicitly tagged non-production.</li>
+              <li>Requires a masking rule on every confirmed sensitive column before an extraction is allowed to proceed.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-intro">
+          <p class="eyebrow">Case-study snapshot</p>
+          <h2>Why this matters for enterprise QA and data provisioning.</h2>
+          <p>Graft grew from a real production/non-production drift problem: proving which rows belong together to safely recreate one business entity, without a tester having to trust tribal schema knowledge or copy more than they should. The engine is deterministic end to end — discovery, closure, planning, and masking never depend on an LLM — with AI available only as a read-only, advisory layer for exploration.</p>
+        </div>
+        <div class="feature-list">
+          <article class="panel">
+            <h3>Evidence-backed discovery</h3>
+            <p>Every relationship edge carries evidence — a constraint name, source line, view name, or statistic. An edge with no evidence is treated as a bug, not a lint warning.</p>
+          </article>
+          <article class="panel">
+            <h3>Bounded, never-silent extraction</h3>
+            <p>Row/table/depth budgets halt and report when an extraction would exceed them, rather than silently truncating a result set that looks complete but isn't.</p>
+          </article>
+          <article class="panel">
+            <h3>Code-level prod-write guard</h3>
+            <p>Graft refuses to write to a production-tagged connection in code, independent of what the database grants would technically allow — a guard, not just a convention.</p>
+          </article>
+          <article class="panel">
+            <h3>Deterministic first</h3>
+            <p>No LLM anywhere in discovery, closure, planning, or masking. AI is advisory-only, available through an MCP server for read-only exploration, never in the execution path.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section alt" id="features">
+        <div class="section-intro">
+          <p class="eyebrow">Feature depth</p>
+          <h2>A focused relationship-discovery and extraction workbench.</h2>
+        </div>
+        <div class="feature-list">
+          <article class="panel">
+            <h3>Automated + heuristic discovery</h3>
+            <p>Declared foreign keys are trusted immediately. Heuristic relationships — name similarity, view joins, PL/SQL static and dynamic analysis — are surfaced for human review and never auto-trusted.</p>
+          </article>
+          <article class="panel">
+            <h3>Human-in-the-loop graph review</h3>
+            <p>A Next.js Graph Explorer canvas where suggested edges are approved or rejected before they become traversable. Approval itself is audited — who, when.</p>
+          </article>
+          <article class="panel">
+            <h3>Row-level closure engine</h3>
+            <p>Given a seed — an exact key or a WHERE-clause condition — Graft walks only declared-FK or human-approved edges to compute the exact set of rows that must travel together.</p>
+          </article>
+          <article class="panel">
+            <h3>Insert/delete planning</h3>
+            <p>Builds an insert and delete order for the target, handling foreign-key cycles with an explicit, reasoned resolution strategy per cycle.</p>
+          </article>
+          <article class="panel">
+            <h3>Enforced PII masking</h3>
+            <p>Scans for sensitive columns by name, comment, and live-data-sampling signals. A confirmed sensitive column with no masking rule blocks extraction outright.</p>
+          </article>
+          <article class="panel">
+            <h3>Reviewable output</h3>
+            <p>Produces either a downloadable SQL script for manual review, or a guarded live execute against a connection explicitly tagged non-production — never against production.</p>
+          </article>
+          <article class="panel">
+            <h3>Row lineage tracing</h3>
+            <p>"Why is this row here?" traces any row in a computed manifest back through the exact chain of relationships that pulled it into the extraction, back to the seed.</p>
+          </article>
+          <article class="panel">
+            <h3>Advisory MCP server</h3>
+            <p>Exposes the same discovery, closure, and planning primitives read-only to AI coding agents for "explain why this row is included" style questions — never write access.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="screens">
+        <div class="section-intro">
+          <p class="eyebrow">Product view</p>
+          <h2>From connection to a reviewable extraction plan.</h2>
+          <p>Screens from a locally-running instance, seeded entirely from Graft's own synthetic fixture schema — a small fictional airline dataset. No real connection strings, schemas, or records.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <img src="assets/graft-connections.png" alt="Graft connections screen with a non-production demo connection form and connection test result">
+            <div class="body">
+              <h3>Connections</h3>
+              <p>Each saved connection is tagged production or non_production. Graft only ever reads from production; writes are enforced in code to land only on a non_production target.</p>
+            </div>
+          </article>
+          <article class="project-card">
+            <img src="assets/graft-graph.png" alt="Graft graph explorer showing the fixture schema's twelve tables, tiered relationship edges, and edges awaiting review">
+            <div class="body">
+              <h3>Graph Explorer</h3>
+              <p>Every discovered table and edge, tiered by confidence from a declared foreign key down to an LLM suggestion, with suggested (non-FK) edges held out for explicit approval.</p>
+            </div>
+          </article>
+          <article class="project-card">
+            <img src="assets/graft-extract-wizard.png" alt="Graft extract wizard step 2, entity and seed selection, with FLIGHTS as the anchor table and seed key 1001">
+            <div class="body">
+              <h3>Extract wizard — entity &amp; seed</h3>
+              <p>Pick an anchor table and either an exact key or a condition — here, the fixture's own "Flight 1001" example — to define the business entity being extracted.</p>
+            </div>
+          </article>
+          <article class="project-card">
+            <img src="assets/graft-preview.png" alt="Graft extract wizard step 4, preview and output, ready to compute the row-level manifest and extraction plan">
+            <div class="body">
+              <h3>Preview &amp; output</h3>
+              <p>Computes the row-level manifest and insert/delete plan for review, then generates a downloadable SQL script or runs a guarded live copy into a non-production target.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section alt">
+        <div class="two-column">
+          <div>
+            <p class="eyebrow">Architecture</p>
+            <h2>Five deterministic stages behind a thin API and Next.js UI.</h2>
+            <p class="lead">Each stage is its own package in the engine, with the FastAPI layer serializing existing engine calls rather than owning new business logic, and an MCP server exposing the same primitives read-only to AI agents.</p>
+          </div>
+          <div class="panel architecture">
+            <div class="flow-row">
+              <div class="flow-box"><strong>Scanner</strong><br>Reads Oracle's data dictionary into a versioned, drift-watermarked metadata snapshot.</div>
+              <div class="flow-arrow">-&gt;</div>
+              <div class="flow-box"><strong>Discovery</strong><br>Declared FKs plus heuristic sources, merged into one evidence-backed, confidence-tiered graph.</div>
+            </div>
+            <div class="flow-row">
+              <div class="flow-box"><strong>Graph review</strong><br>Next.js canvas where a human approves or rejects suggested edges before they become traversable.</div>
+              <div class="flow-arrow">-&gt;</div>
+              <div class="flow-box"><strong>Closure + planning</strong><br>Walks only trusted edges under budgets to compute the row set and insert/delete order.</div>
+            </div>
+            <div class="flow-row">
+              <div class="flow-box"><strong>Masking + ETL</strong><br>Sensitive columns must be classified and given a masking rule before a load plan is generated.</div>
+              <div class="flow-arrow">-&gt;</div>
+              <div class="flow-box"><strong>Script or guarded execute</strong><br>Downloadable SQL, or a live copy enforced to land only on a non_production target.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="setup">
+        <div class="two-column">
+          <div class="panel">
+            <h2>Setup and use</h2>
+            <ol>
+              <li>Add a source and target connection, each explicitly tagged production or non_production.</li>
+              <li>Discover relationships and review the graph — approve or reject suggested (non-FK) edges before they become traversable.</li>
+              <li>Pick an anchor table and a seed — an exact key or a condition — to define the business entity.</li>
+              <li>Configure budgets, lookup strategy, collision policy, and confirm masking rules for any sensitive columns.</li>
+              <li>Compute the preview manifest and insert/delete plan, and trace any row's lineage back to the seed.</li>
+              <li>Generate a reviewable SQL script, or execute a guarded live copy into a non_production target.</li>
+            </ol>
+          </div>
+          <div class="panel">
+            <h2>Tech stack</h2>
+            <div class="meta">
+              <span>Python 3.12</span>
+              <span>python-oracledb</span>
+              <span>NetworkX</span>
+              <span>SQLAlchemy</span>
+              <span>FastAPI</span>
+              <span>FastMCP</span>
+              <span>keyring</span>
+              <span>pytest</span>
+              <span>Next.js 15</span>
+              <span>React 19</span>
+              <span>TypeScript</span>
+              <span>SWR</span>
+              <span>@xyflow/react</span>
+              <span>Playwright</span>
+            </div>
+            <p class="safety-note">This page describes capability and architecture only. All screenshots are from Graft's own synthetic fixture schema — a small fictional airline dataset — never a real database, connection string, or dataset.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Graft case study</span>
+      <span><a href="index.html">Back to portfolio</a></span>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>
