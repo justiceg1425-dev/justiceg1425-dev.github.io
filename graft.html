@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Graft Case Study - Justice Gnanamuttu</title>
-    <meta name="description" content="Graft case study: an Oracle relationship-discovery and safe test-data-provisioning tool that maps live database relationships and generates reviewable extraction scripts for a single business entity.">
+    <meta name="description" content="Graft case study: an Oracle and MySQL relationship-discovery and safe test-data-provisioning tool that maps live database relationships and generates reviewable extraction scripts for a single business entity.">
     <link rel="icon" href="assets/mockflow-mark.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,15 +31,15 @@
       <section class="detail-hero">
         <div>
           <a class="breadcrumb" href="index.html">Back to portfolio</a>
-          <p class="eyebrow">Oracle relationship discovery &amp; safe test data</p>
+          <p class="eyebrow">Relationship discovery &amp; safe test data</p>
           <h1>Graft</h1>
-          <p class="lead">An Oracle relationship-discovery and safe test-data-provisioning tool. Graft maps real database relationships from live metadata, then generates a reviewable SQL script — or runs a guarded live copy — that pulls one complete business entity out of production and into a non-production environment, instead of testers manually and blindly copying data between environments.</p>
+          <p class="lead">An Oracle and MySQL relationship-discovery and safe test-data-provisioning tool. Graft maps real database relationships from live metadata, then generates a reviewable SQL script — or runs a guarded live copy — that pulls one complete business entity out of production and into a non-production environment, instead of testers manually and blindly copying data between environments.</p>
           <div class="button-row">
             <a class="button primary" href="#features">Explore features</a>
             <a class="button" href="#setup">Setup and architecture</a>
           </div>
           <div class="stat-grid">
-            <article class="stat"><strong>Oracle</strong><span>data dictionary discovery</span></article>
+            <article class="stat"><strong>Oracle + MySQL</strong><span>dialect-aware discovery</span></article>
             <article class="stat"><strong>Row-level</strong><span>closure across the graph</span></article>
             <article class="stat"><strong>Bounded</strong><span>budgets halt, never truncate</span></article>
             <article class="stat"><strong>Guarded</strong><span>code-level prod-write block</span></article>
@@ -53,12 +53,12 @@
           <div class="section-intro">
             <p class="eyebrow">Problem</p>
             <h2>Recreating one business entity for testing shouldn't require tribal knowledge of the schema.</h2>
-            <p>Enterprise Oracle databases often have thousands of interconnected tables. Production has complete, realistic data; staging, QA, and UAT environments drift stale over time. Manually figuring out which rows need to travel together to recreate one flight, order, or customer for testing is currently manual, error-prone, slow, and dependent on whoever happens to know the schema best.</p>
+            <p>Enterprise Oracle and MySQL databases often have thousands of interconnected tables. Production has complete, realistic data; staging, QA, and UAT environments drift stale over time. Manually figuring out which rows need to travel together to recreate one flight, order, or customer for testing is currently manual, error-prone, slow, and dependent on whoever happens to know the schema best.</p>
           </div>
           <article class="panel">
             <h3>What the tool solves</h3>
             <ul>
-              <li>Scans Oracle's data dictionary to discover declared foreign keys automatically, plus heuristic relationships surfaced for human review.</li>
+              <li>Scans Oracle's or MySQL's data dictionary to discover declared foreign keys automatically, plus heuristic relationships surfaced for human review.</li>
               <li>Builds a dependency graph from approved relationships and computes the full row-level closure for a chosen seed entity.</li>
               <li>Enforces hard row/table/depth budgets that halt and report rather than silently truncating a result set a tester might trust as complete.</li>
               <li>Generates a reviewable, downloadable SQL script, or executes a guarded live copy into a connection explicitly tagged non-production.</li>
@@ -72,16 +72,24 @@
         <div class="section-intro">
           <p class="eyebrow">Case-study snapshot</p>
           <h2>Why this matters for enterprise QA and data provisioning.</h2>
-          <p>Graft grew from a real production/non-production drift problem: proving which rows belong together to safely recreate one business entity, without a tester having to trust tribal schema knowledge or copy more than they should. The engine is deterministic end to end — discovery, closure, planning, and masking never depend on an LLM — with AI available only as a read-only, advisory layer for exploration.</p>
+          <p>Graft grew from a real production/non-production drift problem: proving which rows belong together to safely recreate one business entity, without a tester having to trust tribal schema knowledge or copy more than they should. The engine is deterministic end to end — discovery, closure, planning, and masking never depend on an LLM — with AI available only as a read-only, advisory layer for exploration. It has since been run against a real enterprise Oracle schema running to nearly two thousand tables, which directly shaped several of the features below.</p>
         </div>
         <div class="feature-list">
           <article class="panel">
-            <h3>Evidence-backed discovery</h3>
-            <p>Every relationship edge carries evidence — a constraint name, source line, view name, or statistic. An edge with no evidence is treated as a bug, not a lint warning.</p>
+            <h3>Evidence-backed discovery, tested under fire</h3>
+            <p>Every relationship edge carries evidence — a constraint name, source line, view name, or statistic. Discovered edges are now also cross-validated against the real scanned schema before they can become an approvable suggestion, closing a gap where a heuristic match could name a column that simply doesn't exist on the claimed table — a real failure mode caught and fixed against a production-scale schema, not a hypothetical.</p>
           </article>
           <article class="panel">
-            <h3>Bounded, never-silent extraction</h3>
-            <p>Row/table/depth budgets halt and report when an extraction would exceed them, rather than silently truncating a result set that looks complete but isn't.</p>
+            <h3>Bounded, never-silent extraction — actually enforced</h3>
+            <p>Row, table, and depth budgets halt and report when an extraction would exceed them, rather than silently truncating a result set that looks complete but isn't. The depth budget now correctly bounds optional child-table expansion while never limiting mandatory parent inclusion, so a tight budget can never quietly break referential integrity.</p>
+          </article>
+          <article class="panel">
+            <h3>Focus mode for schemas at real scale</h3>
+            <p>A live Oracle schema with close to two thousand tables makes an unscoped graph unusable to render or reason about. Selecting one or more tables now scopes the canvas, stats, and side panel to just those tables plus everything reachable upstream and downstream, with an optional hop limit for deeply interconnected schemas.</p>
+          </article>
+          <article class="panel">
+            <h3>Correctable human review</h3>
+            <p>An edge approved or rejected in error — often only discoverable once a real extraction hits it — can now be re-decided directly in the Graph Explorer instead of being a one-way decision.</p>
           </article>
           <article class="panel">
             <h3>Code-level prod-write guard</h3>
@@ -101,12 +109,16 @@
         </div>
         <div class="feature-list">
           <article class="panel">
+            <h3>Dialect-aware engine</h3>
+            <p>A dialect abstraction lets the same engine connect to, discover, and extract from either Oracle or MySQL. Scanning, closure, masking, and ETL are all dialect-aware under the hood, and the Connections screen adapts its form per database type — separate host/port/database fields for MySQL, DSN/TNS for Oracle.</p>
+          </article>
+          <article class="panel">
             <h3>Automated + heuristic discovery</h3>
             <p>Declared foreign keys are trusted immediately. Heuristic relationships — name similarity, view joins, PL/SQL static and dynamic analysis — are surfaced for human review and never auto-trusted.</p>
           </article>
           <article class="panel">
             <h3>Human-in-the-loop graph review</h3>
-            <p>A Next.js Graph Explorer canvas where suggested edges are approved or rejected before they become traversable. Approval itself is audited — who, when.</p>
+            <p>A Next.js Graph Explorer canvas where suggested edges are approved or rejected before they become traversable, and a past decision can be reset and re-made. Approval itself is audited — who, when.</p>
           </article>
           <article class="panel">
             <h3>Row-level closure engine</h3>
@@ -122,7 +134,7 @@
           </article>
           <article class="panel">
             <h3>Reviewable output</h3>
-            <p>Produces either a downloadable SQL script for manual review, or a guarded live execute against a connection explicitly tagged non-production — never against production.</p>
+            <p>Produces either a downloadable SQL script for manual review, or a guarded live execute against a connection explicitly tagged non-production — never against production. Manifest and plan output now carry plain-language explanations alongside the raw data.</p>
           </article>
           <article class="panel">
             <h3>Row lineage tracing</h3>
@@ -131,6 +143,10 @@
           <article class="panel">
             <h3>Advisory MCP server</h3>
             <p>Exposes the same discovery, closure, and planning primitives read-only to AI coding agents for "explain why this row is included" style questions — never write access.</p>
+          </article>
+          <article class="panel">
+            <h3>Canvas &amp; connection polish</h3>
+            <p>Zoom controls (25%-200%) and a collapsible legend keep the Graph Explorer usable on dense schemas. An Oracle connection can also specify a schema/owner override, for the common case of connecting as a grants-only user rather than the schema owner.</p>
           </article>
         </div>
       </section>
@@ -143,10 +159,17 @@
         </div>
         <div class="project-grid">
           <article class="project-card">
-            <img src="assets/graft-connections.png" alt="Graft connections screen with a non-production demo connection form and connection test result">
+            <img src="assets/graft-connections.png" alt="Graft connections screen with an Oracle non-production demo connection, schema/owner override field, and connection test result">
             <div class="body">
-              <h3>Connections</h3>
-              <p>Each saved connection is tagged production or non_production. Graft only ever reads from production; writes are enforced in code to land only on a non_production target.</p>
+              <h3>Connections — Oracle</h3>
+              <p>Each saved connection is tagged production or non_production. An optional schema/owner override covers connecting as a grants-only user reading a different schema's tables.</p>
+            </div>
+          </article>
+          <article class="project-card">
+            <img src="assets/graft-mysql.png" alt="Graft connections screen with the database type switched to MySQL, showing separate host, port, and database fields">
+            <div class="body">
+              <h3>Connections — MySQL</h3>
+              <p>Switching database type re-shapes the form to MySQL's own connection fields — separate host, port, and database name — behind the same dialect-aware engine as Oracle.</p>
             </div>
           </article>
           <article class="project-card">
@@ -154,6 +177,13 @@
             <div class="body">
               <h3>Graph Explorer</h3>
               <p>Every discovered table and edge, tiered by confidence from a declared foreign key down to an LLM suggestion, with suggested (non-FK) edges held out for explicit approval.</p>
+            </div>
+          </article>
+          <article class="project-card">
+            <img src="assets/graft-focus.png" alt="Graft graph explorer in focus mode, scoped to two selected tables and everything reachable within one hop">
+            <div class="body">
+              <h3>Graph Explorer — focus mode</h3>
+              <p>Scopes the canvas, stats, and side panel to selected tables plus everything reachable upstream and downstream, with an optional hop limit — built for schemas too large to render whole.</p>
             </div>
           </article>
           <article class="project-card">
@@ -182,7 +212,7 @@
           </div>
           <div class="panel architecture">
             <div class="flow-row">
-              <div class="flow-box"><strong>Scanner</strong><br>Reads Oracle's data dictionary into a versioned, drift-watermarked metadata snapshot.</div>
+              <div class="flow-box"><strong>Scanner</strong><br>Reads Oracle's or MySQL's data dictionary, through a shared dialect abstraction, into a versioned, drift-watermarked metadata snapshot.</div>
               <div class="flow-arrow">-&gt;</div>
               <div class="flow-box"><strong>Discovery</strong><br>Declared FKs plus heuristic sources, merged into one evidence-backed, confidence-tiered graph.</div>
             </div>
@@ -205,8 +235,8 @@
           <div class="panel">
             <h2>Setup and use</h2>
             <ol>
-              <li>Add a source and target connection, each explicitly tagged production or non_production.</li>
-              <li>Discover relationships and review the graph — approve or reject suggested (non-FK) edges before they become traversable.</li>
+              <li>Add a source and target connection — Oracle or MySQL — each explicitly tagged production or non_production.</li>
+              <li>Discover relationships and review the graph — approve, reject, or later re-decide suggested (non-FK) edges before they become traversable. On a large schema, use focus mode to scope the canvas to the tables that matter.</li>
               <li>Pick an anchor table and a seed — an exact key or a condition — to define the business entity.</li>
               <li>Configure budgets, lookup strategy, collision policy, and confirm masking rules for any sensitive columns.</li>
               <li>Compute the preview manifest and insert/delete plan, and trace any row's lineage back to the seed.</li>
@@ -218,6 +248,7 @@
             <div class="meta">
               <span>Python 3.12</span>
               <span>python-oracledb</span>
+              <span>PyMySQL</span>
               <span>NetworkX</span>
               <span>SQLAlchemy</span>
               <span>FastAPI</span>
